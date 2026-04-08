@@ -1,45 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Portfolio Website</title>
-</head>
-<body>
-    <header>
-        <a href="#" class="logo">@dev.pioruocco</a>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giuseppe Pio Ruocco | Developer</title>
 
-        <nav>
-            <a href="#" class="active"> Home</a>
-        </nav>
-    </header>
-    <section class="home">
-        <div class="home-img">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQHo7wp8UBMSYQ/profile-displayphoto-scale_400_400/B4DZmwVHkZIgAg-/0/1759599951225?e=1765411200&v=beta&t=s_q8twYd-jyR4GiXzjoWZIm0ZfukbFxwCSacrnY3alY" alt="">
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>Giuseppe Pio Ruocco</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>
-                Backend developer specialized in scalable architectures, complex integrations, and designing robust APIs.
-I turn functional requirements into solid solutions, maintaining order, clarity, and attention to detail in the code.
-            </p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/giuseppe-pio-ruocco-7b4367267/"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/JosephPshine63"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.instagram.com/dev.pioruocco/"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <details style="margin-top: 2rem; border: 2px solid #b74b4b; border-radius: 1rem; padding: 1rem; width: max-content; cursor: pointer;">
-                <summary style="font-size: 1.8rem; color: #b74b4b;">Show Contacts</summary>
-                <p style="margin-top: 1rem; font-size: 1.6rem;">
-                    Email: <a href="mailto:dev.pioruocco@gmail.com" style="color: #b74b4b;">dev.pioruocco@gmail.com</a><br>
-                    Phone: <a href="tel:+391234567890" style="color: #b74b4b;">+39 346 752 8654</a>
-                </p>
-            </details>
-        </div>
-    </section>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0b0b0b;
+  color: #f1f5f9;
+}
+
+header {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #7f1d1d;
+}
+
+.tagline {
+  color: #ef4444;
+  margin-top: 10px;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  border-bottom: 2px solid #7f1d1d;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* INTRO */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.intro img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #7f1d1d;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.intro img:hover {
+  transform: scale(1.05);
+}
+
+/* SKILLS */
+.skills span {
+  display: inline-block;
+  background: #1f1f1f;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+  border: 1px solid #7f1d1d33;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(127, 29, 29, 0.5);
+}
+
+a {
+  color: #ef4444;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020202;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Giuseppe Pio Ruocco</h1>
+  <p class="tagline">Analyst Software Engineer</p>
+  <p>Building scalable applications with modern technologies while hoping to not break some things along the way ;))</p>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <div class="intro">
+    <img src="assets\profile.jpeg" alt="Profile Photo">
+    <p>
+      I’m a Software Engineer with experience in enterprise environments and personal full-stack projects.
+      I specialize in Java Spring Boot and Angular, focusing on building scalable, secure, and performant applications.
+      
+      I enjoy designing APIs, working on system architecture, and delivering real-world solutions.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="skills">
+
+    <h3>Backend</h3>
+    <span>Java</span>
+    <span>Spring Boot</span>
+    <span>Spring Security</span>
+    <span>REST API Design</span>
+    <span>JWT & OAuth2</span>
+    <span>Python Django</span>
+
+    <h3>Frontend</h3>
+    <span>Angular</span>
+    <span>React</span>
+    <span>TypeScript</span>
+    <span>Tailwind CSS</span>
+
+    <h3>Database & DevOps</h3>
+    <span>PostgreSQL</span>
+    <span>MySQL</span>
+    <span>Docker</span>
+    <span>JPA / Hibernate</span>
+
+    <h3>Architecture & Tools</h3>
+    <span>Microservices (spring cloud)</span>
+    <span>Layered Architecture</span>
+    <span>Git</span>
+
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <div class="card">
+      <h3>PioCart - E-commerce Backend</h3>
+      <p>
+        Backend engine for a scalable e-commerce platform, designed to manage products, carts, and orders with a clean and modular architecture.
+      </p>
+
+      <ul>
+        <li>Designed full domain model (Product, Cart, Order, User)</li>
+        <li>Implemented dynamic cart and order processing logic</li>
+        <li>Built REST APIs with validation and DTO mapping</li>
+        <li>Dockerized PostgreSQL environment for local development</li>
+      </ul>
+
+      <p><strong>Tech:</strong> Java 17, Spring Boot, PostgreSQL, Docker</p>
+      <a href="https://github.com/JosephPshine63/PioCart" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <h3>Connecting - Real-Time Chat</h3>
+      <p>
+        Real-time messaging platform inspired by WhatsApp Web, supporting live communication and secure authentication.
+      </p>
+
+      <ul>
+        <li>Built WebSocket-based real-time communication</li>
+        <li>Implemented OAuth2 + JWT authentication with Keycloak</li>
+        <li>Designed scalable backend and Dockerized environment</li>
+      </ul>
+
+      <p><strong>Tech:</strong> Spring Boot, Angular, PostgreSQL, Docker</p>
+      <a href="https://github.com/JosephPshine63/connecting" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="card">
+      <h3>GPRFlow - Crypto Trading Platform</h3>
+      <p>
+        Full-stack cryptocurrency trading platform with real-time data, secure authentication, and portfolio tracking.
+      </p>
+
+      <ul>
+        <li>Implemented JWT, OAuth2, and 2FA authentication system</li>
+        <li>Built trading system with wallet, orders, and portfolio tracking</li>
+        <li>Integrated external APIs (CoinGecko, Stripe, Gemini AI)</li>
+        <li>Developed scalable frontend with React and Redux</li>
+      </ul>
+
+      <p><strong>Tech:</strong> Spring Boot, React, MySQL, Redux, Tailwind</p>
+      <a href="https://github.com/JosephPshine63/GprFlow" target="_blank">View on GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: dev.pioruocco@gmail.com</p>
+  <p>
+    <a href="https://github.com/JosephPshine63">GitHub</a> |
+    <a href="https://www.linkedin.com/in/giuseppe-pio-ruocco-7b4367267/">LinkedIn</a>
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 Giuseppe Pio Ruocco</p>
+</footer>
+
 </body>
 </html>
