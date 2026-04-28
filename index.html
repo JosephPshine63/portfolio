@@ -3,230 +3,951 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giuseppe Pio Ruocco | Developer</title>
-
+<title>Giuseppe Pio Ruocco — Fullstack Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0b0b0b;
-  color: #f1f5f9;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-header {
-  padding: 60px 20px;
-  text-align: center;
-}
+  :root {
+    --bg: #0a0a0b;
+    --bg2: #111113;
+    --bg3: #18181b;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.14);
+    --text: #f4f4f5;
+    --muted: #71717a;
+    --muted2: #52525b;
+    --accent: #6ee7b7;
+    --accent2: #3b82f6;
+    --accent-dim: rgba(110,231,183,0.1);
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
 
-h1 {
-  font-size: 3rem;
-  margin: 0;
-  color: #7f1d1d;
-}
+  html { scroll-behavior: smooth; }
 
-.tagline {
-  color: #ef4444;
-  margin-top: 10px;
-}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+    background: rgba(10,10,11,0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 14px;
+    border: 1px solid var(--border-hover);
+    border-radius: 6px;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 
-h2 {
-  border-bottom: 2px solid #7f1d1d;
-  display: inline-block;
-  margin-bottom: 20px;
-}
+  /* LAYOUT */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
 
-/* INTRO */
-.intro {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
+  section { padding: 100px 0; }
 
-.intro img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 3px solid #7f1d1d;
-  object-fit: cover;
-  transition: 0.3s;
-}
+  /* DIVIDER */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
 
-.intro img:hover {
-  transform: scale(1.05);
-}
+  /* HERO */
+  #hero {
+    padding-top: 160px;
+    padding-bottom: 120px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    padding: 5px 12px;
+    border: 1px solid rgba(110,231,183,0.2);
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-sub strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--accent);
+    color: #0a0a0b;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: #a7f3d0; transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-hover);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-ghost:hover { border-color: var(--border-hover); color: var(--text); }
+  .hero-meta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero-stat .num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--text);
+    font-weight: 300;
+  }
+  .hero-stat .lbl {
+    font-size: 12px;
+    color: var(--muted2);
+    letter-spacing: 0.04em;
+  }
 
-/* SKILLS */
-.skills span {
-  display: inline-block;
-  background: #1f1f1f;
-  padding: 8px 12px;
-  margin: 5px;
-  border-radius: 8px;
-}
+  /* ABOUT */
+  #about .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .about-cell {
+    background: var(--bg2);
+    padding: 1.8rem;
+  }
+  .about-cell:first-child {
+    grid-column: 1 / -1;
+    background: var(--bg3);
+  }
+  .about-cell h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .about-cell p {
+    color: var(--muted);
+    line-height: 1.85;
+    font-size: 14.5px;
+  }
+  .about-cell p strong { color: var(--text); font-weight: 400; }
+  .about-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .about-list li {
+    font-size: 13.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .about-list li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
 
-/* PROJECTS */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
+  /* SKILLS */
+  #skills .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    background: var(--bg2);
+    transition: background 0.2s;
+  }
+  .skill-row:hover { background: var(--bg3); }
+  .skill-cat {
+    padding: 1.2rem 1.5rem;
+    border-right: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 1.3rem;
+  }
+  .skill-tags {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    transition: all 0.15s;
+  }
+  .tag:hover { border-color: var(--border-hover); color: var(--text); }
+  .tag.primary {
+    border-color: rgba(110,231,183,0.3);
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
 
-.card {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 12px;
-  transition: 0.3s;
-  border: 1px solid #7f1d1d33;
-}
+  /* PROJECTS */
+  #projects .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .project-card {
+    background: var(--bg2);
+    padding: 2rem;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .project-card:hover { background: var(--bg3); }
+  .project-card + .project-card {
+    border-top: 1px solid var(--border);
+  }
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  .project-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .project-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(110,231,183,0.3);
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .project-desc strong { color: var(--text); font-weight: 400; }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1rem;
+  }
+  .project-links {
+    display: flex;
+    gap: 12px;
+  }
+  .project-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted2);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+  .project-link:hover { color: var(--accent); }
+  .project-link svg { width: 12px; height: 12px; }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(127, 29, 29, 0.5);
-}
+  /* EXPERIENCE */
+  #experience .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .exp-list::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+  .exp-item {
+    padding: 0 0 2.5rem 2rem;
+    position: relative;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 8px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--bg3);
+    border: 1px solid var(--border-hover);
+  }
+  .exp-item.current::before { background: var(--accent); border-color: var(--accent); }
+  .exp-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .exp-company {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted2);
+    white-space: nowrap;
+  }
+  .exp-role {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-family: var(--font-mono);
+  }
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .exp-points li {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-left: 14px;
+    position: relative;
+  }
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted2);
+    font-size: 11px;
+  }
+  .exp-points li strong { color: var(--text); font-weight: 400; }
 
-a {
-  color: #ef4444;
-  text-decoration: none;
-}
+  /* CONTACT */
+  #contact {
+    padding-bottom: 120px;
+  }
+  .contact-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .contact-card h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .contact-card p {
+    color: var(--muted);
+    font-size: 14.5px;
+    max-width: 440px;
+  }
+  .contact-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-item:hover { border-color: var(--border-hover); color: var(--text); }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #020202;
-}
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted2);
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up:nth-child(2) { transition-delay: 0.05s; }
+  .fade-up:nth-child(3) { transition-delay: 0.1s; }
+  .fade-up:nth-child(4) { transition-delay: 0.15s; }
+  .fade-up:nth-child(5) { transition-delay: 0.2s; }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    section { padding: 70px 0; }
+    #hero { padding-top: 120px; }
+    .about-grid { grid-template-columns: 1fr !important; }
+    .about-cell:first-child { grid-column: 1 / 2; }
+    .skill-row { grid-template-columns: 120px 1fr; }
+    .contact-card { padding: 2rem 1.5rem; }
+    .hero-meta { gap: 1.5rem; }
+    .exp-meta { flex-direction: column; gap: 0; }
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Giuseppe Pio Ruocco</h1>
-  <p class="tagline">Analyst Software Engineer</p>
-  <p>Building scalable applications with modern technologies while hoping to not break some things along the way ;))</p>
-</header>
+<nav>
+  <a href="#hero" class="nav-logo">gpr.dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:dev.pioruocco@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
 
-<section>
-  <h2>About Me</h2>
-  <div class="intro">
-    <img src="assets\profile.jpeg" alt="Profile Photo">
-    <p>
-      I’m a Software Engineer with experience in enterprise environments and personal full-stack projects.
-      I specialize in Java Spring Boot and Angular, focusing on building scalable, secure, and performant applications.
-      
-      I enjoy designing APIs, working on system architecture, and delivering real-world solutions.
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      Open to new opportunities
+    </div>
+    <h1>
+      Fullstack Engineer<br>
+      building <em>production</em>-grade<br>
+      software.
+    </h1>
+    <p class="hero-sub">
+      I ship <strong>end-to-end features</strong> — from Spring Boot APIs to Angular SPA to Docker-deployed infra. Currently at Accenture, working on enterprise insurance platforms for Generali. Previously at IBM. <strong>2+ years</strong> in real production environments.
     </p>
+    <div class="hero-actions">
+      <a href="https://github.com/JosephPshine63" target="_blank" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/giuseppe-pio-ruocco-7b4367267/" target="_blank" class="btn-ghost">
+        LinkedIn
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <span class="num">2+</span>
+        <span class="lbl">years production exp</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">4</span>
+        <span class="lbl">personal projects created</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>Skills</h2>
-  <div class="skills">
-
-    <h3>Backend</h3>
-    <span>Java</span>
-    <span>Spring Boot</span>
-    <span>Spring Security</span>
-    <span>REST API Design</span>
-    <span>JWT & OAuth2</span>
-    <span>Python Django</span>
-
-    <h3>Frontend</h3>
-    <span>Angular</span>
-    <span>React</span>
-    <span>TypeScript</span>
-    <span>Tailwind CSS</span>
-
-    <h3>Database & DevOps</h3>
-    <span>PostgreSQL</span>
-    <span>MySQL</span>
-    <span>Docker</span>
-    <span>JPA / Hibernate</span>
-
-    <h3>Architecture & Tools</h3>
-    <span>Microservices (spring cloud)</span>
-    <span>Layered Architecture</span>
-    <span>Git</span>
-
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div class="about-cell">
+        <h3>Who I am</h3>
+        <p>
+          I'm a Fullstack Engineer based in Naples, Italy. I work across the entire stack — <strong>Java Spring Boot</strong> on the backend, <strong>Angular and React</strong> on the frontend — and I care about shipping things that actually run in production, not just demos.<br><br>
+          I've contributed to enterprise platforms used across the EU (insurance, public administration, healthcare), and I build personal projects to explore areas I find genuinely interesting: real-time systems, auth, payments, AI integrations.
+        </p>
+      </div>
+      <div class="about-cell">
+        <h3>Currently</h3>
+        <ul class="about-list">
+          <li>Analyst Software Engineer at Accenture</li>
+          <li>Building Angular 16+ for Generali (EU)</li>
+          <li>Always open to opportunities</li>
+          <li>Targeting roles where I own full features</li>
+        </ul>
+      </div>
+      <div class="about-cell">
+        <h3>Outside work</h3>
+        <ul class="about-list">
+          <li>Shipping fullstack projects on Railway + Vercel</li>
+          <li>Exploring WebSocket, OAuth2 flows, AI APIs</li>
+          <li>English C1 — comfortable in international teams</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>Projects</h2>
-  <div class="projects">
-
-    <div class="card">
-      <h3>PioCart - E-commerce Backend</h3>
-      <p>
-        Backend engine for a scalable e-commerce platform, designed to manage products, carts, and orders with a clean and modular architecture.
-      </p>
-
-      <ul>
-        <li>Designed full domain model (Product, Cart, Order, User)</li>
-        <li>Implemented dynamic cart and order processing logic</li>
-        <li>Built REST APIs with validation and DTO mapping</li>
-        <li>Dockerized PostgreSQL environment for local development</li>
-      </ul>
-
-      <p><strong>Tech:</strong> Java 17, Spring Boot, PostgreSQL, Docker</p>
-      <a href="https://github.com/JosephPshine63/PioCart" target="_blank">View on GitHub</a>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-cat">Backend</span>
+        <div class="skill-tags">
+          <span class="tag primary">Java 11+</span>
+          <span class="tag primary">Spring Boot 3</span>
+          <span class="tag primary">Spring Security</span>
+          <span class="tag primary">REST API</span>
+          <span class="tag">Spring Data JPA</span>
+          <span class="tag">JWT</span>
+          <span class="tag">OAuth2</span>
+          <span class="tag">Keycloak</span>
+          <span class="tag">WebSocket</span>
+          <span class="tag">Spring Batch</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Frontend</span>
+        <div class="skill-tags">
+          <span class="tag primary">Angular 14–18</span>
+          <span class="tag primary">TypeScript</span>
+          <span class="tag primary">RxJS</span>
+          <span class="tag">React 18</span>
+          <span class="tag">Redux</span>
+          <span class="tag">Angular Material</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">SCSS</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Database</span>
+        <div class="skill-tags">
+          <span class="tag primary">PostgreSQL</span>
+          <span class="tag primary">MySQL</span>
+          <span class="tag">Oracle DB</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Liquibase</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">DevOps</span>
+        <div class="skill-tags">
+          <span class="tag primary">Docker</span>
+          <span class="tag primary">Docker Compose</span>
+          <span class="tag primary">Git / GitFlow</span>
+          <span class="tag">CI/CD pipelines</span>
+          <span class="tag">Maven</span>
+          <span class="tag">Gradle</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Integrations</span>
+        <div class="skill-tags">
+          <span class="tag">Stripe</span>
+          <span class="tag">Gemini AI</span>
+          <span class="tag">CoinGecko API</span>
+          <span class="tag">Gmail SMTP</span>
+          <span class="tag">Razorpay</span>
+          <span class="tag">WSO2</span>
+        </div>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>Connecting - Real-Time Chat</h3>
-      <p>
-        Real-time messaging platform inspired by WhatsApp Web, supporting live communication and secure authentication.
-      </p>
-
-      <ul>
-        <li>Built WebSocket-based real-time communication</li>
-        <li>Implemented OAuth2 + JWT authentication with Keycloak</li>
-        <li>Designed scalable backend and Dockerized environment</li>
-      </ul>
-
-      <p><strong>Tech:</strong> Spring Boot, Angular, PostgreSQL, Docker</p>
-      <a href="https://github.com/JosephPshine63/connecting" target="_blank">View on GitHub</a>
-    </div>
-
-    <div class="card">
-      <h3>GPRFlow - Crypto Trading Platform</h3>
-      <p>
-        Full-stack cryptocurrency trading platform with real-time data, secure authentication, and portfolio tracking.
-      </p>
-
-      <ul>
-        <li>Implemented JWT, OAuth2, and 2FA authentication system</li>
-        <li>Built trading system with wallet, orders, and portfolio tracking</li>
-        <li>Integrated external APIs (CoinGecko, Stripe, Gemini AI)</li>
-        <li>Developed scalable frontend with React and Redux</li>
-      </ul>
-
-      <p><strong>Tech:</strong> Spring Boot, React, MySQL, Redux, Tailwind</p>
-      <a href="https://github.com/JosephPshine63/GprFlow" target="_blank">View on GitHub</a>
-    </div>
-
   </div>
 </section>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: dev.pioruocco@gmail.com</p>
-  <p>
-    <a href="https://github.com/JosephPshine63">GitHub</a> |
-    <a href="https://www.linkedin.com/in/giuseppe-pio-ruocco-7b4367267/">LinkedIn</a>
-  </p>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <div class="projects-list">
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-name">GprFlow — Crypto Trading Platform</span>
+          <span class="project-badge">Live in production</span>
+        </div>
+        <p class="project-desc">
+          A fully deployed fullstack platform for buying and selling crypto in real time. I built the entire system — <strong>live price charts via CoinGecko</strong>, dynamic portfolio tracking, order history, and a multi-layer auth system (JWT stateless + OAuth2 Google + OTP 2FA via email/SMS). Integrated <strong>Stripe and Razorpay</strong> for real payment flows and a <strong>Gemini AI chatbot</strong> for market analysis.
+        </p>
+        <div class="project-stack">
+          <span class="tag primary">Spring Boot</span>
+          <span class="tag primary">React</span>
+          <span class="tag">Redux</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Stripe</span>
+          <span class="tag">Gemini AI</span>
+          <span class="tag">OAuth2</span>
+          <span class="tag">JWT</span>
+          <span class="tag">2FA</span>
+          <span class="tag">Railway + Vercel</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/JosephPshine63" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            Source
+          </a>
+          <a href="https://pioruocco.dev" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            Live demo
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-name">Connecting — Real-time Chat App</span>
+          <span class="project-badge">Deployed · Public</span>
+        </div>
+        <p class="project-desc">
+          A WhatsApp Web-inspired messaging app with <strong>WebSocket-based real-time communication</strong>, global chat rooms, and full identity management via Keycloak (OAuth2 + JWT + roles). The entire infrastructure is <strong>dockerized</strong> — Postgres, Spring Boot, Angular, and Keycloak all run via Docker Compose, making it deployable in one command.
+        </p>
+        <div class="project-stack">
+          <span class="tag primary">Spring Boot</span>
+          <span class="tag primary">Angular</span>
+          <span class="tag primary">WebSocket</span>
+          <span class="tag">Keycloak</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker Compose</span>
+          <span class="tag">OAuth2 + JWT</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/JosephPshine63" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            Source
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-name">PioCart — E-Commerce Backend</span>
+          <span class="project-badge">Public</span>
+        </div>
+        <p class="project-desc">
+          A complete REST API for an e-commerce platform: product and category management, <strong>dynamic cart logic</strong>, order processing, and user management. Domain model built with proper JPA relationships (OneToMany, ManyToMany), input validation, and a fully <strong>dockerized dev environment</strong> via Docker Compose.
+        </p>
+        <div class="project-stack">
+          <span class="tag primary">Java 17</span>
+          <span class="tag primary">Spring Boot 3</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker Compose</span>
+          <span class="tag">ModelMapper</span>
+          <span class="tag">Lombok</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/JosephPshine63" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            Source
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-name">BookTribe — Social Reading Platform</span>
+          <span class="project-badge">Fullstack</span>
+        </div>
+        <p class="project-desc">
+          A social platform for book tracking and sharing. Built with a <strong>fullstack monorepo</strong> — Spring Boot backend, Angular frontend, and a self-managed Keycloak realm for identity. Users can manage and share their reading lists, with auth handled via Keycloak's OAuth2 flow.
+        </p>
+        <div class="project-stack">
+          <span class="tag primary">Spring Boot</span>
+          <span class="tag primary">Angular</span>
+          <span class="tag">Keycloak</span>
+          <span class="tag">Maven</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <div class="exp-list">
+
+      <div class="exp-item current fade-up">
+        <div class="exp-meta">
+          <span class="exp-company">Accenture</span>
+          <span class="exp-period">Nov 2025 — Present</span>
+        </div>
+        <div class="exp-role">Analyst Software Engineer · Napoli</div>
+        <ul class="exp-points">
+          <li><strong>80% of frontend contribution</strong> on IIAB — a live EU insurance platform for Generali, built on Angular 15+ with custom framework</li>
+          <li>Architected services, modules, and reusable pipes for complex insurance workflows with focus on performance</li>
+          <li>Contributed to REST and SOAP APIs handling core business logic</li>
+          <li>Worked in Agile/Scrum</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <span class="exp-company">Exibe</span>
+          <span class="exp-period">Oct 2025 — Mar 2026</span>
+        </div>
+        <div class="exp-role">Backend Software Engineer · Napoli</div>
+        <ul class="exp-points">
+          <li>Co-designed backend architecture and domain model for e-instant, an Airbnb/TheFork-style booking platform</li>
+          <li>Built services, controllers, and repositories with <strong>Spring Boot 3.4 + Spring Data JPA</strong> on PostgreSQL</li>
+          <li>Implemented JWT + Spring Security auth from scratch</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <span class="exp-company">Sistemi Informativi — IBM Company</span>
+          <span class="exp-period">May 2024 — Sep 2025</span>
+        </div>
+        <div class="exp-role">Software Engineer · Roma</div>
+        <ul class="exp-points">
+          <li><strong>GDSI (Armed Forces Health Data)</strong>: Spring Boot services, new Keycloak role, Spring Security config, Angular 14 optimization</li>
+          <li><strong>Lucilla (Rome City Council)</strong>: full Angular frontend restructure + technical and functional documentation</li>
+          <li><strong>CDC/WSO2 (Digital House of the Citizen)</strong>: application log management and platform monitoring on WSO2</li>
+          <li>Managed schema migrations with <strong>Liquibase</strong> across Oracle DB in a multi-team environment</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <span class="exp-company">IndSoftware</span>
+          <span class="exp-period">Nov 2023 — Dec 2023</span>
+        </div>
+        <div class="exp-role">HMI Developer · Angri (SA)</div>
+        <ul class="exp-points">
+          <li>Developed SCADA/HMI applications for PLC management using Siemens TIA Portal</li>
+          <li>Wrote business logic in VBScript and SQL for Oracle DB integration</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <div class="contact-card">
+      <h2>Let's build something together.</h2>
+      <p>I'm open to fullstack or backend roles at SaaS or fintech companies. If you're looking for someone who ships end-to-end and cares about production quality — let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:dev.pioruocco@gmail.com" class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          dev.pioruocco@gmail.com
+        </a>
+        <a href="tel:+393467528654" class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +39 346 752 8654
+        </a>
+        <a href="https://www.linkedin.com/in/giuseppe-pio-ruocco-7b4367267/" target="_blank" class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/JosephPshine63" target="_blank" class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 Giuseppe Pio Ruocco</p>
+  <p>Built by Giuseppe Pio Ruocco · Napoli, Italia · 2025</p>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
 
 </body>
 </html>
