@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giuseppe Pio Ruocco — Fullstack Software Engineer</title>
+<link rel="icon" type="image/png" href="assets/portfolio-logo.png">
 <meta name="description" content="Fullstack Software Engineer specialized in Java Spring Boot, Angular/React, and Claude-assisted engineering workflows.">
 <meta name="google-site-verification" content="ucWLCbVLIzvAGL1uKAOIdKPYga7b288GO60p-8z55rc" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,6 +189,8 @@
   .project-head h3 { font-size: 1.15rem; font-weight: 600; }
   .project-title { display: flex; align-items: center; gap: 0.5rem; }
   .project-icon { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; }
+  .nav-logo { display: flex; align-items: center; gap: 0.4rem; }
+  .nav-logo-icon { width: 22px; height: 22px; flex-shrink: 0; }
   .project-badge {
     font-family: var(--font-mono); font-size: 11px;
     padding: 3px 9px; border-radius: 20px;
@@ -253,7 +256,7 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">GPR</a>
+    <a href="#" class="nav-logo"><img src="assets/portfolio-logo.png" alt="" class="nav-logo-icon">GPR</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -395,7 +398,10 @@
 
       <div class="project-card">
         <div class="project-head">
-          <h3>GprFlow — Crypto Trading Platform</h3>
+          <div class="project-title">
+            <img src="assets/gprflow-icon.png" alt="GprFlow" class="project-icon">
+            <h3>GprFlow — Crypto Trading Platform</h3>
+          </div>
           <span class="project-badge">Personal</span>
         </div>
         <p class="desc">A fullstack platform for real-time crypto trading: live price charts via CoinGecko, wallet-based buy/sell, portfolio tracking with per-asset profit/loss, watchlist, and order history. Auth with stateless JWT in an HttpOnly cookie, optional email OTP 2FA, and Cloudflare Turnstile. Stripe payments (test mode on the public demo) and a Gemini AI chatbot for market Q&amp;A. The backend is being split from a monolith into independent Spring Boot services behind a gateway that handles JWT validation, rate limiting, and request size caps; deployed via GitHub Actions to a self-hosted server behind a Cloudflare Tunnel.</p>
