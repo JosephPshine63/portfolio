@@ -186,6 +186,8 @@
   .project-card:hover { border-color: var(--border-hover); }
   .project-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .project-head h3 { font-size: 1.15rem; font-weight: 600; }
+  .project-title { display: flex; align-items: center; gap: 0.5rem; }
+  .project-icon { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; }
   .project-badge {
     font-family: var(--font-mono); font-size: 11px;
     padding: 3px 9px; border-radius: 20px;
@@ -375,7 +377,10 @@
 
       <div class="project-card">
         <div class="project-head">
-          <h3>WacChat — Real-Time Chat Platform</h3>
+          <div class="project-title">
+            <img src="assets/wacchat-icon.png" alt="WacChat" class="project-icon">
+            <h3>WacChat — Real-Time Chat Platform</h3>
+          </div>
           <span class="project-badge">Personal</span>
         </div>
         <p class="desc">A WhatsApp Web-inspired messaging system built as 5 Spring Boot 3 microservices: API gateway (WebFlux), file service, notification service, and a call service with WebRTC support. Identity via a custom-themed Keycloak realm with Google login, messaging over RabbitMQ/STOMP, file storage on Cloudflare R2, and a full observability stack (Prometheus, Grafana, Loki, Tempo). Includes "Arno," a Gemini-powered chatbot, and an Angular 19 client generated from the OpenAPI spec.</p>
