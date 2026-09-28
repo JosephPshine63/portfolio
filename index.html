@@ -57,7 +57,7 @@
   }
 
   a { color: inherit; }
-  section, .project-card, .cert-card, .contact-box, .skill-tags span, .ai-callout, #about, #experience, .timeline-item, .avatar {
+  section, .project-card, .cert-card, .contact-box, .skill-tags span, .ai-callout, #about, #experience, .timeline-item {
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
   section { padding: 6rem 0; }
@@ -122,11 +122,24 @@
     transition: border-color 0.2s, background-color 0.2s;
   }
   .theme-toggle:hover { border-color: var(--border-hover); }
+  .lang-toggle {
+    height: 32px;
+    padding: 0 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--bg2);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .lang-toggle:hover { border-color: var(--border-hover); }
 
   /* HERO */
   .hero { padding: 9rem 0 5rem; }
-  .hero-top { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
-  .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
   .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
   .hero .role { font-family: var(--font-mono); color: var(--accent); font-size: 15px; margin-top: 0.4rem; }
   .hero p.lede { max-width: 620px; color: var(--muted); font-size: 1.05rem; margin: 1.5rem 0 2rem; }
@@ -258,11 +271,12 @@
   <div class="nav-inner">
     <a href="#" class="nav-logo"><img src="assets/portfolio-logo.png" alt="" class="nav-logo-icon">GPR</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Get in touch</a></li>
+      <li><button class="lang-toggle" id="lang-toggle" aria-label="Switch language" type="button">IT</button></li>
       <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button"></button></li>
     </ul>
   </div>
@@ -270,22 +284,19 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="hero-top">
-      <img src="assets/profile.jpeg" alt="Giuseppe Pio Ruocco" class="avatar">
-    </div>
     <h1>Giuseppe Pio Ruocco</h1>
     <div class="role">Fullstack Software Engineer · Java Spring Boot · Angular · React</div>
-    <p class="lede">I build production systems end-to-end — from REST/microservices backends to Angular/React frontends — across enterprise consulting engagements and independent products. Currently exploring Claude-assisted engineering workflows on top of that foundation.</p>
+    <p class="lede" data-i18n="hero.lede">I build production systems end-to-end — from REST/microservices backends to Angular/React frontends — across enterprise consulting engagements and independent products. Currently exploring Claude-assisted engineering workflows on top of that foundation.</p>
     <div class="hero-links">
-      <a href="#projects" class="btn btn-primary">View projects</a>
-      <a href="mailto:dev.pioruocco@gmail.com" class="btn btn-outline">Email me</a>
+      <a href="#projects" class="btn btn-primary" data-i18n="hero.btnProjects">View projects</a>
+      <a href="mailto:dev.pioruocco@gmail.com" class="btn btn-outline" data-i18n="hero.btnEmail">Email me</a>
       <a href="https://github.com/JosephPshine63" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/giuseppe-pio-ruocco-7b4367267/" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="stats">
       <div>
         <div class="stat-num">3+</div>
-        <div class="stat-label">years in production</div>
+        <div class="stat-label" data-i18n="hero.statLabel">years in production</div>
       </div>
     </div>
   </div>
@@ -294,23 +305,23 @@
 <section id="about">
   <div class="wrap">
     <div>
-      <span class="eyebrow">About</span>
-      <p>I'm a Fullstack Software Engineer based in Naples, Italy. I work across the entire stack — <strong>Java Spring Boot</strong> on the backend, <strong>Angular</strong> and <strong>React</strong> on the frontend — and I care about shipping things that actually run in production, not just demos.</p>
-      <p>I've contributed to enterprise platforms used across the EU (insurance, public administration, defense healthcare records), and outside of that I build and ship independent products end-to-end: real-time systems, multi-layer auth, payments, and AI integrations.</p>
-      <p>More recently, I've been formalizing how I use <strong>Claude and the Anthropic ecosystem</strong> (Claude Code, MCP, agent skills, subagents) as part of my day-to-day engineering workflow — treating AI-assisted development as a skill to build deliberately, not just a tool to dabble with.</p>
+      <span class="eyebrow" data-i18n="about.eyebrow">About</span>
+      <p data-i18n="about.p1">I'm a Fullstack Software Engineer based in Naples, Italy. I work across the entire stack — <strong>Java Spring Boot</strong> on the backend, <strong>Angular</strong> and <strong>React</strong> on the frontend — and I care about shipping things that actually run in production, not just demos.</p>
+      <p data-i18n="about.p2">I've contributed to enterprise platforms used across the EU (insurance, public administration, defense healthcare records), and outside of that I build and ship independent products end-to-end: real-time systems, multi-layer auth, payments, and AI integrations.</p>
+      <p data-i18n="about.p3">More recently, I've been formalizing how I use <strong>Claude and the Anthropic ecosystem</strong> (Claude Code, MCP, agent skills, subagents) as part of my day-to-day engineering workflow — treating AI-assisted development as a skill to build deliberately, not just a tool to dabble with.</p>
     </div>
     <div class="about-side">
-      <h3>Currently</h3>
+      <h3 data-i18n="about.currently">Currently</h3>
       <ul>
-        <li>Analyst Software Engineer at Accenture</li>
-        <li>Building Angular 16+ for a live EU insurance platform (Generali) and a React/Node.js platform for Italy's electricity balancing market (Terna)</li>
-        <li>Open to fullstack / backend roles</li>
+        <li data-i18n="about.li1">Analyst Software Engineer at Accenture</li>
+        <li data-i18n="about.li2">Building Angular 16+ for a live EU insurance platform (Generali) and a React/Node.js platform for Italy's electricity balancing market (Terna)</li>
+        <li data-i18n="about.li3">Open to fullstack / backend roles</li>
       </ul>
-      <h3>Outside work</h3>
+      <h3 data-i18n="about.outside">Outside work</h3>
       <ul>
-        <li>Shipping personal projects: microservices, WebRTC, real-time chat</li>
-        <li>Running a self-hosted homelab on Ubuntu Server</li>
-        <li>English C1 — comfortable in international teams</li>
+        <li data-i18n="about.oli1">Shipping personal projects: microservices, WebRTC, real-time chat</li>
+        <li data-i18n="about.oli2">Running a self-hosted homelab on Ubuntu Server</li>
+        <li data-i18n="about.oli3">English C1 — comfortable in international teams</li>
       </ul>
     </div>
   </div>
@@ -318,8 +329,8 @@
 
 <section id="skills">
   <div class="wrap">
-    <span class="eyebrow">Skills</span>
-    <h2>What I work with</h2>
+    <span class="eyebrow" data-i18n="skills.eyebrow">Skills</span>
+    <h2 data-i18n="skills.h2">What I work with</h2>
     <div class="skills-grid">
       <div class="skill-cat">
         <h4>Backend</h4>
@@ -346,27 +357,27 @@
         </div>
       </div>
       <div class="skill-cat">
-        <h4>Integrations</h4>
+        <h4 data-i18n="skills.integrations">Integrations</h4>
         <div class="skill-tags">
           <span>Stripe</span><span>Razorpay</span><span>Twilio</span><span>Veriff KYC</span><span>TTLock</span><span>Gemini AI</span><span>Supabase</span><span>WSO2</span>
         </div>
       </div>
       <div class="skill-cat">
-        <h4>Architecture</h4>
+        <h4 data-i18n="skills.architecture">Architecture</h4>
         <div class="skill-tags">
           <span>Microservices</span><span>API Gateway</span><span>DTO/DAO/MVC</span><span>Design Patterns</span>
         </div>
       </div>
       <div class="skill-cat">
         <h4>Systems &amp; Self-Hosting</h4>
-        <p class="skill-note">Personal Ubuntu Server homelab — hands-on Linux admin, not professional-level</p>
+        <p class="skill-note" data-i18n="skills.note">Personal Ubuntu Server homelab — hands-on Linux admin, not professional-level</p>
         <div class="skill-tags">
           <span>Ubuntu Server</span><span>UFW Firewall</span><span>Backups</span><span>Cockpit</span><span>Nextcloud</span><span>Portainer</span><span>Nginx</span><span>Nginx Proxy Manager</span><span>Pi-hole</span>
         </div>
       </div>
       <div class="ai-callout">
-        <h4>AI-Assisted Engineering</h4>
-        <p>Certified through Anthropic Academy: Claude Code 101, Introduction to Model Context Protocol, Introduction to Agent Skills, Introduction to Subagents, and AI Fluency: Framework &amp; Foundations. I use Claude Code as part of my real development workflow, not just for prototyping.</p>
+        <h4 data-i18n="skills.aiTitle">AI-Assisted Engineering</h4>
+        <p data-i18n="skills.aiText">Certified through Anthropic Academy: Claude Code 101, Introduction to Model Context Protocol, Introduction to Agent Skills, Introduction to Subagents, and AI Fluency: Framework &amp; Foundations. I use Claude Code as part of my real development workflow, not just for prototyping.</p>
       </div>
     </div>
   </div>
@@ -374,8 +385,8 @@
 
 <section id="projects">
   <div class="wrap">
-    <span class="eyebrow">Projects</span>
-    <h2>Things I've built &amp; shipped</h2>
+    <span class="eyebrow" data-i18n="projects.eyebrow">Projects</span>
+    <h2 data-i18n="projects.h2">Things I've built &amp; shipped</h2>
     <div class="projects-list">
 
       <div class="project-card">
@@ -384,15 +395,15 @@
             <img src="assets/wacchat-icon.png" alt="WacChat" class="project-icon">
             <h3>WacChat — Real-Time Chat Platform</h3>
           </div>
-          <span class="project-badge">Personal</span>
+          <span class="project-badge" data-i18n="projects.badge">Personal</span>
         </div>
-        <p class="desc">A WhatsApp Web-inspired messaging system built as 5 Spring Boot 3 microservices: API gateway (WebFlux), file service, notification service, and a call service with WebRTC support. Identity via a custom-themed Keycloak realm with Google login, messaging over RabbitMQ/STOMP, file storage on Cloudflare R2, and a full observability stack (Prometheus, Grafana, Loki, Tempo). Includes "Arno," a Gemini-powered chatbot, and an Angular 19 client generated from the OpenAPI spec.</p>
+        <p class="desc" data-i18n="projects.wacchat.desc">A WhatsApp Web-inspired messaging system built as 5 Spring Boot 3 microservices: API gateway (WebFlux), file service, notification service, and a call service with WebRTC support. Identity via a custom-themed Keycloak realm with Google login, messaging over RabbitMQ/STOMP, file storage on Cloudflare R2, and a full observability stack (Prometheus, Grafana, Loki, Tempo). Includes "Arno," a Gemini-powered chatbot, and an Angular 19 client generated from the OpenAPI spec.</p>
         <div class="project-tags">
           <span>Spring Boot 3</span><span>Angular 19</span><span>Keycloak</span><span>RabbitMQ</span><span>WebRTC</span><span>Docker</span><span>Prometheus/Grafana</span>
         </div>
         <div class="project-links">
-          <a href="https://wacchat.win" target="_blank" rel="noopener">Live →</a>
-          <a href="https://github.com/JosephPshine63/connecting" target="_blank" rel="noopener">Source →</a>
+          <a href="https://wacchat.win" target="_blank" rel="noopener" data-i18n="projects.live">Live →</a>
+          <a href="https://github.com/JosephPshine63/connecting" target="_blank" rel="noopener" data-i18n="projects.source">Source →</a>
         </div>
       </div>
 
@@ -402,43 +413,43 @@
             <img src="assets/gprflow-icon.png" alt="GprFlow" class="project-icon">
             <h3>GprFlow — Crypto Trading Platform</h3>
           </div>
-          <span class="project-badge">Personal</span>
+          <span class="project-badge" data-i18n="projects.badge">Personal</span>
         </div>
-        <p class="desc">A fullstack platform for real-time crypto trading: live price charts via CoinGecko, wallet-based buy/sell, portfolio tracking with per-asset profit/loss, watchlist, and order history. Auth with stateless JWT in an HttpOnly cookie, optional email OTP 2FA, and Cloudflare Turnstile. Stripe payments (test mode on the public demo) and a Gemini AI chatbot for market Q&amp;A. The backend is being split from a monolith into independent Spring Boot services behind a gateway that handles JWT validation, rate limiting, and request size caps; deployed via GitHub Actions to a self-hosted server behind a Cloudflare Tunnel.</p>
+        <p class="desc" data-i18n="projects.gprflow.desc">A fullstack platform for real-time crypto trading: live price charts via CoinGecko, wallet-based buy/sell, portfolio tracking with per-asset profit/loss, watchlist, and order history. Auth with stateless JWT in an HttpOnly cookie, optional email OTP 2FA, and Cloudflare Turnstile. Stripe payments (test mode on the public demo) and a Gemini AI chatbot for market Q&amp;A. The backend is being split from a monolith into independent Spring Boot services behind a gateway that handles JWT validation, rate limiting, and request size caps; deployed via GitHub Actions to a self-hosted server behind a Cloudflare Tunnel.</p>
         <div class="project-tags">
           <span>Spring Boot</span><span>Spring Cloud Gateway</span><span>React</span><span>PostgreSQL</span><span>Stripe</span><span>Gemini AI</span><span>JWT</span><span>2FA</span>
         </div>
         <div class="project-links">
-          <a href="https://gprflow.trade" target="_blank" rel="noopener">Live (Stripe test mode) →</a>
-          <a href="https://github.com/JosephPshine63/GprFlow" target="_blank" rel="noopener">Source →</a>
+          <a href="https://gprflow.trade" target="_blank" rel="noopener" data-i18n="projects.liveStripe">Live (Stripe test mode) →</a>
+          <a href="https://github.com/JosephPshine63/GprFlow" target="_blank" rel="noopener" data-i18n="projects.source">Source →</a>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-head">
           <h3>PioCart — E-Commerce Backend Engine</h3>
-          <span class="project-badge">Personal</span>
+          <span class="project-badge" data-i18n="projects.badge">Personal</span>
         </div>
-        <p class="desc">A complete REST API for an e-commerce platform: product and category management, dynamic cart logic, order processing, and user management. JPA domain model with proper relationships (OneToMany, ManyToMany), input validation, and a fully dockerized dev environment.</p>
+        <p class="desc" data-i18n="projects.piocart.desc">A complete REST API for an e-commerce platform: product and category management, dynamic cart logic, order processing, and user management. JPA domain model with proper relationships (OneToMany, ManyToMany), input validation, and a fully dockerized dev environment.</p>
         <div class="project-tags">
           <span>Java 17</span><span>Spring Boot 3</span><span>PostgreSQL</span><span>Docker</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/JosephPshine63/PioCart" target="_blank" rel="noopener">Source →</a>
+          <a href="https://github.com/JosephPshine63/PioCart" target="_blank" rel="noopener" data-i18n="projects.source">Source →</a>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-head">
           <h3>BookTribe — Social Reading Platform</h3>
-          <span class="project-badge">Personal</span>
+          <span class="project-badge" data-i18n="projects.badge">Personal</span>
         </div>
-        <p class="desc">A textbook Spring Cloud microservices setup — config server, discovery server, gateway, feedback and notification services — paired with an Angular frontend and a self-managed Keycloak realm for identity, built to explore microservices architecture end-to-end.</p>
+        <p class="desc" data-i18n="projects.booktribe.desc">A textbook Spring Cloud microservices setup — config server, discovery server, gateway, feedback and notification services — paired with an Angular frontend and a self-managed Keycloak realm for identity, built to explore microservices architecture end-to-end.</p>
         <div class="project-tags">
           <span>Spring Cloud</span><span>Angular</span><span>Keycloak</span><span>Microservices</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/JosephPshine63/BookTribe" target="_blank" rel="noopener">Source →</a>
+          <a href="https://github.com/JosephPshine63/BookTribe" target="_blank" rel="noopener" data-i18n="projects.source">Source →</a>
         </div>
       </div>
 
@@ -448,50 +459,50 @@
 
 <section id="experience">
   <div class="wrap">
-    <span class="eyebrow">Experience</span>
-    <h2>Where I've worked</h2>
+    <span class="eyebrow" data-i18n="experience.eyebrow">Experience</span>
+    <h2 data-i18n="experience.h2">Where I've worked</h2>
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="timeline-date">Nov 2025 — Present</div>
+        <div class="timeline-date" data-i18n="experience.date1">Nov 2025 — Present</div>
         <div class="timeline-content">
           <h3>Analyst Software Engineer</h3>
-          <div class="org">Accenture · Naples, Italy</div>
+          <div class="org" data-i18n="experience.org1">Accenture · Naples, Italy</div>
           <ul>
-            <li>Project IIAB — enterprise insurance platform in production across the EU for Generali, within a cross-company team of 200+ people</li>
-            <li>Developed Angular 16+ components (services, modules, pipes) for complex insurance workflows</li>
-            <li>Contributed to REST API development in Java Spring Boot for core business logic</li>
-            <li>Applied GitFlow, pull requests, and systematic code reviews across ~8 bi-weekly sprints</li>
-            <li>Project for Terna S.p.A. — web platform digitizing the daily management of Italy's national electricity balancing market</li>
-            <li>Built the frontend in React and TypeScript and backend services in Java and Node.js under a microservices architecture</li>
-            <li>Integrated Oracle and MongoDB databases, with asynchronous batch processing and real-time WebSocket notifications</li>
-            <li>Managed Kubernetes deployment and CI/CD pipelines, with code versioning on GitLab</li>
+            <li data-i18n="experience.e1li1">Project IIAB — enterprise insurance platform in production across the EU for Generali, within a cross-company team of 200+ people</li>
+            <li data-i18n="experience.e1li2">Developed Angular 16+ components (services, modules, pipes) for complex insurance workflows</li>
+            <li data-i18n="experience.e1li3">Contributed to REST API development in Java Spring Boot for core business logic</li>
+            <li data-i18n="experience.e1li4">Applied GitFlow, pull requests, and systematic code reviews across ~8 bi-weekly sprints</li>
+            <li data-i18n="experience.e1li5">Project for Terna S.p.A. — web platform digitizing the daily management of Italy's national electricity balancing market</li>
+            <li data-i18n="experience.e1li6">Built the frontend in React and TypeScript and backend services in Java and Node.js under a microservices architecture</li>
+            <li data-i18n="experience.e1li7">Integrated Oracle and MongoDB databases, with asynchronous batch processing and real-time WebSocket notifications</li>
+            <li data-i18n="experience.e1li8">Managed Kubernetes deployment and CI/CD pipelines, with code versioning on GitLab</li>
           </ul>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">May 2024 — Sep 2025</div>
+        <div class="timeline-date" data-i18n="experience.date2">May 2024 — Sep 2025</div>
         <div class="timeline-content">
           <h3>Software Engineer</h3>
-          <div class="org">Sistemi Informativi — an IBM Company · Rome, Italy</div>
+          <div class="org" data-i18n="experience.org2">Sistemi Informativi — an IBM Company · Rome, Italy</div>
           <ul>
-            <li>GDSI (Military Medical Records Management): built Spring Boot services, new Keycloak role, updated Spring Security config, optimized Angular 14 components</li>
-            <li>Lucilla (Municipality of Rome, city council resolutions): refactored Angular frontend, authored technical documentation</li>
-            <li>CDC/WSO2 (Digital Citizen Hub): managed application logs and platform monitoring on WSO2</li>
-            <li>Integrated Elasticsearch for data indexing and advanced search; used Liquibase for Oracle DB schema migrations</li>
+            <li data-i18n="experience.e2li1">GDSI (Military Medical Records Management): built Spring Boot services, new Keycloak role, updated Spring Security config, optimized Angular 14 components</li>
+            <li data-i18n="experience.e2li2">Lucilla (Municipality of Rome, city council resolutions): refactored Angular frontend, authored technical documentation</li>
+            <li data-i18n="experience.e2li3">CDC/WSO2 (Digital Citizen Hub): managed application logs and platform monitoring on WSO2</li>
+            <li data-i18n="experience.e2li4">Integrated Elasticsearch for data indexing and advanced search; used Liquibase for Oracle DB schema migrations</li>
           </ul>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">Nov 2023 — Dec 2023</div>
+        <div class="timeline-date" data-i18n="experience.date3">Nov 2023 — Dec 2023</div>
         <div class="timeline-content">
           <h3>HMI Developer</h3>
-          <div class="org">IndSoftware · Angri (SA), Italy</div>
+          <div class="org" data-i18n="experience.org3">IndSoftware · Angri (SA), Italy</div>
           <ul>
-            <li>Built SCADA/HMI applications for PLC management using Siemens TIA Portal and MS Access</li>
-            <li>Implemented business logic in VBScript and SQL for Oracle database interaction</li>
+            <li data-i18n="experience.e3li1">Built SCADA/HMI applications for PLC management using Siemens TIA Portal and MS Access</li>
+            <li data-i18n="experience.e3li2">Implemented business logic in VBScript and SQL for Oracle database interaction</li>
           </ul>
         </div>
       </div>
@@ -502,8 +513,8 @@
 
 <section id="certifications">
   <div class="wrap">
-    <span class="eyebrow">Certifications</span>
-    <h2>Selected credentials</h2>
+    <span class="eyebrow" data-i18n="certifications.eyebrow">Certifications</span>
+    <h2 data-i18n="certifications.h2">Selected credentials</h2>
     <div class="cert-grid">
       <div class="cert-card"><div class="cert-org">Anthropic</div><div class="cert-name">Claude Code 101</div></div>
       <div class="cert-card"><div class="cert-org">Anthropic</div><div class="cert-name">Introduction to Model Context Protocol</div></div>
@@ -521,9 +532,9 @@
 <section id="contact">
   <div class="wrap">
     <div class="contact-box">
-      <span class="eyebrow" style="justify-content:center;display:flex;">Contact</span>
-      <h2>Let's build something together</h2>
-      <p>I'm open to fullstack or backend roles at product, SaaS, or consulting companies. If you're looking for someone who ships end-to-end and cares about production quality — let's talk.</p>
+      <span class="eyebrow" style="justify-content:center;display:flex;" data-i18n="contact.eyebrow">Contact</span>
+      <h2 data-i18n="contact.h2">Let's build something together</h2>
+      <p data-i18n="contact.p">I'm open to fullstack or backend roles at product, SaaS, or consulting companies. If you're looking for someone who ships end-to-end and cares about production quality — let's talk.</p>
       <div class="contact-links">
         <a href="mailto:dev.pioruocco@gmail.com" class="btn btn-primary"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>dev.pioruocco@gmail.com</a>
         <a href="tel:+393467528654" class="btn btn-outline"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+39 346 752 8654</a>
@@ -534,7 +545,7 @@
   </div>
 </section>
 
-<footer>
+<footer data-i18n="footer.text">
   Built by Giuseppe Pio Ruocco · Napoli, Italia
 </footer>
 
@@ -559,6 +570,176 @@
       var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       apply(next);
       localStorage.setItem('theme', next);
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var langToggle = document.getElementById('lang-toggle');
+
+    var translations = {
+      en: {
+        'nav.about': 'About',
+        'nav.skills': 'Skills',
+        'nav.projects': 'Projects',
+        'nav.experience': 'Experience',
+        'nav.contact': 'Get in touch',
+        'hero.lede': 'I build production systems end-to-end — from REST/microservices backends to Angular/React frontends — across enterprise consulting engagements and independent products. Currently exploring Claude-assisted engineering workflows on top of that foundation.',
+        'hero.btnProjects': 'View projects',
+        'hero.btnEmail': 'Email me',
+        'hero.statLabel': 'years in production',
+        'about.eyebrow': 'About',
+        'about.p1': 'I\'m a Fullstack Software Engineer based in Naples, Italy. I work across the entire stack — <strong>Java Spring Boot</strong> on the backend, <strong>Angular</strong> and <strong>React</strong> on the frontend — and I care about shipping things that actually run in production, not just demos.',
+        'about.p2': 'I\'ve contributed to enterprise platforms used across the EU (insurance, public administration, defense healthcare records), and outside of that I build and ship independent products end-to-end: real-time systems, multi-layer auth, payments, and AI integrations.',
+        'about.p3': 'More recently, I\'ve been formalizing how I use <strong>Claude and the Anthropic ecosystem</strong> (Claude Code, MCP, agent skills, subagents) as part of my day-to-day engineering workflow — treating AI-assisted development as a skill to build deliberately, not just a tool to dabble with.',
+        'about.currently': 'Currently',
+        'about.li1': 'Analyst Software Engineer at Accenture',
+        'about.li2': 'Building Angular 16+ for a live EU insurance platform (Generali) and a React/Node.js platform for Italy\'s electricity balancing market (Terna)',
+        'about.li3': 'Open to fullstack / backend roles',
+        'about.outside': 'Outside work',
+        'about.oli1': 'Shipping personal projects: microservices, WebRTC, real-time chat',
+        'about.oli2': 'Running a self-hosted homelab on Ubuntu Server',
+        'about.oli3': 'English C1 — comfortable in international teams',
+        'skills.eyebrow': 'Skills',
+        'skills.h2': 'What I work with',
+        'skills.integrations': 'Integrations',
+        'skills.architecture': 'Architecture',
+        'skills.note': 'Personal Ubuntu Server homelab — hands-on Linux admin, not professional-level',
+        'skills.aiTitle': 'AI-Assisted Engineering',
+        'skills.aiText': 'Certified through Anthropic Academy: Claude Code 101, Introduction to Model Context Protocol, Introduction to Agent Skills, Introduction to Subagents, and AI Fluency: Framework &amp; Foundations. I use Claude Code as part of my real development workflow, not just for prototyping.',
+        'projects.eyebrow': 'Projects',
+        'projects.h2': 'Things I\'ve built &amp; shipped',
+        'projects.badge': 'Personal',
+        'projects.live': 'Live →',
+        'projects.liveStripe': 'Live (Stripe test mode) →',
+        'projects.source': 'Source →',
+        'projects.wacchat.desc': 'A WhatsApp Web-inspired messaging system built as 5 Spring Boot 3 microservices: API gateway (WebFlux), file service, notification service, and a call service with WebRTC support. Identity via a custom-themed Keycloak realm with Google login, messaging over RabbitMQ/STOMP, file storage on Cloudflare R2, and a full observability stack (Prometheus, Grafana, Loki, Tempo). Includes "Arno," a Gemini-powered chatbot, and an Angular 19 client generated from the OpenAPI spec.',
+        'projects.gprflow.desc': 'A fullstack platform for real-time crypto trading: live price charts via CoinGecko, wallet-based buy/sell, portfolio tracking with per-asset profit/loss, watchlist, and order history. Auth with stateless JWT in an HttpOnly cookie, optional email OTP 2FA, and Cloudflare Turnstile. Stripe payments (test mode on the public demo) and a Gemini AI chatbot for market Q&amp;A. The backend is being split from a monolith into independent Spring Boot services behind a gateway that handles JWT validation, rate limiting, and request size caps; deployed via GitHub Actions to a self-hosted server behind a Cloudflare Tunnel.',
+        'projects.piocart.desc': 'A complete REST API for an e-commerce platform: product and category management, dynamic cart logic, order processing, and user management. JPA domain model with proper relationships (OneToMany, ManyToMany), input validation, and a fully dockerized dev environment.',
+        'projects.booktribe.desc': 'A textbook Spring Cloud microservices setup — config server, discovery server, gateway, feedback and notification services — paired with an Angular frontend and a self-managed Keycloak realm for identity, built to explore microservices architecture end-to-end.',
+        'experience.eyebrow': 'Experience',
+        'experience.h2': 'Where I\'ve worked',
+        'experience.date1': 'Nov 2025 — Present',
+        'experience.org1': 'Accenture · Naples, Italy',
+        'experience.e1li1': 'Project IIAB — enterprise insurance platform in production across the EU for Generali, within a cross-company team of 200+ people',
+        'experience.e1li2': 'Developed Angular 16+ components (services, modules, pipes) for complex insurance workflows',
+        'experience.e1li3': 'Contributed to REST API development in Java Spring Boot for core business logic',
+        'experience.e1li4': 'Applied GitFlow, pull requests, and systematic code reviews across ~8 bi-weekly sprints',
+        'experience.e1li5': 'Project for Terna S.p.A. — web platform digitizing the daily management of Italy\'s national electricity balancing market',
+        'experience.e1li6': 'Built the frontend in React and TypeScript and backend services in Java and Node.js under a microservices architecture',
+        'experience.e1li7': 'Integrated Oracle and MongoDB databases, with asynchronous batch processing and real-time WebSocket notifications',
+        'experience.e1li8': 'Managed Kubernetes deployment and CI/CD pipelines, with code versioning on GitLab',
+        'experience.date2': 'May 2024 — Sep 2025',
+        'experience.org2': 'Sistemi Informativi — an IBM Company · Rome, Italy',
+        'experience.e2li1': 'GDSI (Military Medical Records Management): built Spring Boot services, new Keycloak role, updated Spring Security config, optimized Angular 14 components',
+        'experience.e2li2': 'Lucilla (Municipality of Rome, city council resolutions): refactored Angular frontend, authored technical documentation',
+        'experience.e2li3': 'CDC/WSO2 (Digital Citizen Hub): managed application logs and platform monitoring on WSO2',
+        'experience.e2li4': 'Integrated Elasticsearch for data indexing and advanced search; used Liquibase for Oracle DB schema migrations',
+        'experience.date3': 'Nov 2023 — Dec 2023',
+        'experience.org3': 'IndSoftware · Angri (SA), Italy',
+        'experience.e3li1': 'Built SCADA/HMI applications for PLC management using Siemens TIA Portal and MS Access',
+        'experience.e3li2': 'Implemented business logic in VBScript and SQL for Oracle database interaction',
+        'certifications.eyebrow': 'Certifications',
+        'certifications.h2': 'Selected credentials',
+        'contact.eyebrow': 'Contact',
+        'contact.h2': 'Let\'s build something together',
+        'contact.p': 'I\'m open to fullstack or backend roles at product, SaaS, or consulting companies. If you\'re looking for someone who ships end-to-end and cares about production quality — let\'s talk.',
+        'footer.text': 'Built by Giuseppe Pio Ruocco · Napoli, Italia'
+      },
+      it: {
+        'nav.about': 'Chi sono',
+        'nav.skills': 'Competenze',
+        'nav.projects': 'Progetti',
+        'nav.experience': 'Esperienza',
+        'nav.contact': 'Contattami',
+        'hero.lede': 'Costruisco sistemi in produzione end-to-end — da backend REST/a microservizi a frontend Angular/React — sia in contesti di consulenza enterprise sia su prodotti indipendenti. Attualmente sto approfondendo i workflow di sviluppo assistiti da Claude su queste basi.',
+        'hero.btnProjects': 'Vedi i progetti',
+        'hero.btnEmail': 'Scrivimi',
+        'hero.statLabel': 'anni in produzione',
+        'about.eyebrow': 'Chi sono',
+        'about.p1': 'Sono un Fullstack Software Engineer con sede a Napoli. Lavoro su tutto lo stack — <strong>Java Spring Boot</strong> sul backend, <strong>Angular</strong> e <strong>React</strong> sul frontend — e mi interessa consegnare cose che funzionano davvero in produzione, non solo demo.',
+        'about.p2': 'Ho contribuito a piattaforme enterprise usate in tutta l\'UE (assicurazioni, pubblica amministrazione, cartelle sanitarie militari), e al di fuori di questo costruisco e pubblico prodotti indipendenti end-to-end: sistemi realtime, autenticazione multi-livello, pagamenti e integrazioni AI.',
+        'about.p3': 'Più di recente, sto formalizzando come uso <strong>Claude e l\'ecosistema Anthropic</strong> (Claude Code, MCP, agent skills, subagents) nel mio workflow quotidiano — trattando lo sviluppo assistito da AI come una competenza da costruire con metodo, non solo uno strumento da provare per curiosità.',
+        'about.currently': 'Attualmente',
+        'about.li1': 'Analyst Software Engineer in Accenture',
+        'about.li2': 'Sviluppo Angular 16+ per una piattaforma assicurativa europea in produzione (Generali) e una piattaforma React/Node.js per il mercato di bilanciamento elettrico italiano (Terna)',
+        'about.li3': 'Aperto a ruoli fullstack / backend',
+        'about.outside': 'Fuori dal lavoro',
+        'about.oli1': 'Sviluppo progetti personali: microservizi, WebRTC, chat in tempo reale',
+        'about.oli2': 'Gestisco un homelab self-hosted su Ubuntu Server',
+        'about.oli3': 'Inglese C1 — a mio agio in team internazionali',
+        'skills.eyebrow': 'Competenze',
+        'skills.h2': 'Con cosa lavoro',
+        'skills.integrations': 'Integrazioni',
+        'skills.architecture': 'Architettura',
+        'skills.note': 'Homelab personale su Ubuntu Server — amministrazione Linux pratica, non a livello professionale',
+        'skills.aiTitle': 'Ingegneria assistita da AI',
+        'skills.aiText': 'Certificato tramite Anthropic Academy: Claude Code 101, Introduction to Model Context Protocol, Introduction to Agent Skills, Introduction to Subagents e AI Fluency: Framework &amp; Foundations. Uso Claude Code come parte del mio workflow di sviluppo reale, non solo per prototipare.',
+        'projects.eyebrow': 'Progetti',
+        'projects.h2': 'Cose che ho costruito e pubblicato',
+        'projects.badge': 'Personale',
+        'projects.live': 'Live →',
+        'projects.liveStripe': 'Live (modalità test Stripe) →',
+        'projects.source': 'Codice →',
+        'projects.wacchat.desc': 'Un sistema di messaggistica in stile WhatsApp Web costruito come 5 microservizi Spring Boot 3: API gateway (WebFlux), file service, notification service e un call service con supporto WebRTC. Identità gestita tramite un realm Keycloak personalizzato con login Google, messaggistica su RabbitMQ/STOMP, storage file su Cloudflare R2 e uno stack di observability completo (Prometheus, Grafana, Loki, Tempo). Include "Arno", un chatbot basato su Gemini, e un client Angular 19 generato dalla spec OpenAPI.',
+        'projects.gprflow.desc': 'Una piattaforma fullstack per il trading crypto in tempo reale: grafici prezzo live via CoinGecko, acquisto/vendita tramite wallet, tracking del portafoglio con profit/loss per asset, watchlist e storico ordini. Autenticazione con JWT stateless in cookie HttpOnly, 2FA opzionale via OTP email e Cloudflare Turnstile. Pagamenti Stripe (in modalità test sulla demo pubblica) e un chatbot AI Gemini per domande sul mercato. Il backend è in fase di scomposizione da monolite a servizi Spring Boot indipendenti dietro un gateway che gestisce validazione JWT, rate limiting e limiti sulla dimensione delle richieste; deploy tramite GitHub Actions su un server self-hosted dietro Cloudflare Tunnel.',
+        'projects.piocart.desc': 'Una API REST completa per una piattaforma e-commerce: gestione prodotti e categorie, logica del carrello dinamica, gestione ordini e utenti. Modello di dominio JPA con relazioni corrette (OneToMany, ManyToMany), validazione degli input e ambiente di sviluppo completamente dockerizzato.',
+        'projects.booktribe.desc': 'Un setup a microservizi Spring Cloud da manuale — config server, discovery server, gateway, servizi di feedback e notifiche — abbinato a un frontend Angular e un realm Keycloak autogestito per l\'identità, costruito per esplorare l\'architettura a microservizi end-to-end.',
+        'experience.eyebrow': 'Esperienza',
+        'experience.h2': 'Dove ho lavorato',
+        'experience.date1': 'Nov 2025 — Presente',
+        'experience.org1': 'Accenture · Napoli, Italia',
+        'experience.e1li1': 'Progetto IIAB — piattaforma assicurativa enterprise in produzione nell\'UE per Generali, in un team cross-company di 200+ persone',
+        'experience.e1li2': 'Sviluppato componenti Angular 16+ (servizi, moduli, pipe) per flussi assicurativi complessi',
+        'experience.e1li3': 'Contribuito allo sviluppo di API REST in Java Spring Boot per la logica di business principale',
+        'experience.e1li4': 'Applicato GitFlow, pull request e code review sistematiche su ~8 sprint bisettimanali',
+        'experience.e1li5': 'Progetto per Terna S.p.A. — piattaforma web per la digitalizzazione della gestione giornaliera del mercato di bilanciamento elettrico nazionale',
+        'experience.e1li6': 'Sviluppato il frontend in React e TypeScript e i servizi backend in Java e Node.js secondo un\'architettura a microservizi',
+        'experience.e1li7': 'Integrati database Oracle e MongoDB, con elaborazioni batch asincrone e notifiche real-time via WebSocket',
+        'experience.e1li8': 'Gestito il deploy su Kubernetes e le pipeline CI/CD, con versionamento del codice su GitLab',
+        'experience.date2': 'Mag 2024 — Set 2025',
+        'experience.org2': 'Sistemi Informativi — un\'azienda IBM · Roma, Italia',
+        'experience.e2li1': 'GDSI (Gestione Dati Sanitari Infermerie — Forze Armate): sviluppati servizi Spring Boot, nuovo ruolo Keycloak, aggiornata la configurazione Spring Security, ottimizzati componenti Angular 14',
+        'experience.e2li2': 'Lucilla (Comune di Roma, delibere di giunta): rifattorizzato il frontend Angular, redatta documentazione tecnica',
+        'experience.e2li3': 'CDC/WSO2 (Casa Digitale del Cittadino): gestiti log applicativi e monitoraggio della piattaforma su WSO2',
+        'experience.e2li4': 'Integrato Elasticsearch per l\'indicizzazione dati e la ricerca avanzata; usato Liquibase per le migrazioni di schema su Oracle DB',
+        'experience.date3': 'Nov 2023 — Dic 2023',
+        'experience.org3': 'IndSoftware · Angri (SA), Italia',
+        'experience.e3li1': 'Sviluppate applicazioni SCADA/HMI per la gestione di PLC con Siemens TIA Portal e MS Access',
+        'experience.e3li2': 'Implementata la logica di business in VBScript e SQL per l\'interazione con database Oracle',
+        'certifications.eyebrow': 'Certificazioni',
+        'certifications.h2': 'Credenziali selezionate',
+        'contact.eyebrow': 'Contatti',
+        'contact.h2': 'Costruiamo qualcosa insieme',
+        'contact.p': 'Sono aperto a ruoli fullstack o backend in aziende product, SaaS o di consulenza. Se cerchi qualcuno che consegna soluzioni end-to-end e ha a cuore la qualità in produzione — parliamone.',
+        'footer.text': 'Creato da Giuseppe Pio Ruocco · Napoli, Italia'
+      }
+    };
+
+    var nodes = document.querySelectorAll('[data-i18n]');
+
+    function apply(lang) {
+      nodes.forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        var dict = translations[lang] || translations.en;
+        if (dict[key] !== undefined) {
+          el.innerHTML = dict[key];
+        }
+      });
+      root.setAttribute('lang', lang);
+      langToggle.textContent = lang === 'it' ? 'EN' : 'IT';
+    }
+
+    var saved = localStorage.getItem('lang');
+    var browserPrefersIt = (navigator.language || '').toLowerCase().indexOf('it') === 0;
+    apply(saved || (browserPrefersIt ? 'it' : 'en'));
+
+    langToggle.addEventListener('click', function () {
+      var next = root.getAttribute('lang') === 'it' ? 'en' : 'it';
+      apply(next);
+      localStorage.setItem('lang', next);
     });
   })();
 </script>
