@@ -111,10 +111,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 ))}
               </ul>
             </Window>
-            <Window>
-              <p className="label">{t.profile.offCode.label.toUpperCase()}</p>
-              <p>{t.profile.offCode.text}</p>
-            </Window>
             <Window className="window--yellow">
               <p className="pixel">{t.profile.question.title}</p>
               <a className="button" href={`mailto:${site.email}`}>

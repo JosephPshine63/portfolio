@@ -53,10 +53,6 @@ export const it: Dictionary = {
       ],
     },
     stack: { label: 'Stack principale', items: ['Java', 'Spring Boot', 'Angular', 'React', 'Kubernetes'] },
-    offCode: {
-      label: 'Fuori dal codice',
-      text: 'Homelabbing: un server Ubuntu in casa dove girano i miei progetti. E la passione per i giochi del Game Boy Advance.',
-    },
     question: { title: 'Hai una domanda?', button: 'Copia la mia email' },
   },
   journey: {
