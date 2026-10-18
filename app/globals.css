@@ -1,0 +1,404 @@
+/* Design tokens. Day is the default theme, night overrides it.
+   Use these variables instead of hard-coded colors so both themes keep working. */
+:root {
+  --bg: #e8f0f8;
+  --pattern: #dce7f4;
+  --win: #f8f8f8;
+  --frame: #384868;
+  --inner: #a8c0e0;
+  --ink: #283040;
+  --muted: #545c74;
+  --red: #d03830;
+  --blue: #2a5fb8;
+  --green: #2f8a3e;
+  --yellow: #e8b820;
+  --chip: #e4ebf6;
+  color-scheme: light;
+}
+
+:root[data-theme='night'] {
+  --bg: #141c34;
+  --pattern: #19223f;
+  --win: #202a48;
+  --frame: #0a0f20;
+  --inner: #4a5a8a;
+  --ink: #e8ecf8;
+  --muted: #a8b2d0;
+  --red: #f06058;
+  --blue: #8ab4f8;
+  --green: #6fd27e;
+  --yellow: #f8d048;
+  --chip: #2c3860;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image: repeating-conic-gradient(var(--pattern) 0% 25%, var(--bg) 0% 50%);
+  background-size: 32px 32px;
+}
+
+a {
+  color: var(--blue);
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+.pixel,
+.label,
+.logo,
+.button,
+.chip-button,
+.site-nav__links,
+.menu {
+  font-family: var(--font-pixel), monospace;
+  font-weight: 500;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.accent {
+  color: var(--red);
+}
+
+.label {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.status {
+  color: var(--green);
+}
+
+/* Pixel window: the building block of every panel. */
+.window {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: var(--win);
+  border: 4px solid var(--frame);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 3px var(--inner);
+}
+
+.window--yellow {
+  background: var(--yellow);
+  color: #283040;
+}
+
+.window--dashed {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 12px 16px;
+}
+
+.site-nav {
+  max-width: 1120px;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 18px;
+  font-size: 17px;
+}
+
+.site-nav__links a:not(.chip-button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.chip-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--chip);
+  border: 3px solid var(--frame);
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.section-title {
+  margin: 0 0 16px;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.section-title__game {
+  font-size: 17px;
+  color: var(--red);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  .span-2 {
+    grid-column: auto;
+  }
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.hero__side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.trainer-card__name {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.trainer-card__role {
+  font-family: var(--font-pixel), monospace;
+  color: var(--blue);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 0;
+  font-family: var(--font-pixel), monospace;
+}
+
+.stats div {
+  padding: 8px 12px;
+  background: var(--chip);
+  border-radius: 4px;
+}
+
+.stats dt {
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 20px;
+}
+
+.dialog {
+  box-shadow: inset 0 0 0 3px var(--red);
+  min-height: 180px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 22px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 18px;
+  font-size: 18px;
+  color: var(--ink);
+  background: var(--win);
+  border: 4px solid var(--frame);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.button--primary {
+  color: #ffffff;
+  background: var(--red);
+}
+
+ul.plain {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-pixel), monospace;
+}
+
+.chips li {
+  padding: 4px 8px;
+  background: var(--chip);
+  border-radius: 4px;
+}
+
+.party {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.party__featured {
+  flex: 1 1 340px;
+  box-shadow: inset 0 0 0 3px var(--red);
+}
+
+.party__featured h3 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.party__list {
+  flex: 1 1 340px;
+}
+
+.party__slot {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.party__slot .pixel {
+  font-size: 21px;
+}
+
+.party__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  font-family: var(--font-pixel), monospace;
+  color: var(--muted);
+  border: 4px dashed var(--inner);
+  border-radius: 8px;
+}
+
+.moves li {
+  padding: 6px 0;
+  font-family: var(--font-pixel), monospace;
+}
+
+.type {
+  padding: 0 10px;
+  font-size: 14px;
+  color: #ffffff;
+  background: var(--red);
+  border-radius: 4px;
+}
+
+.contact {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 720px;
+  margin: 0 auto;
+  box-shadow: inset 0 0 0 3px var(--red);
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 19px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px 24px;
+  font-family: var(--font-pixel), monospace;
+  color: var(--muted);
+}
