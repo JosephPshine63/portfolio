@@ -19,6 +19,7 @@ export const it: Dictionary = {
     online: 'Online',
     repo: 'Repo',
     myRole: 'Il mio ruolo',
+    avatarAlt: 'Avatar pixel di Giuseppe',
   },
   hero: {
     cardTitle: 'Scheda allenatore',

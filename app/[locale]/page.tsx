@@ -1,4 +1,5 @@
 import { LangSwitch } from '@/components/LangSwitch'
+import { PixelAvatar } from '@/components/PixelAvatar'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getDictionary, isLocale, type Locale } from '@/content'
 import { site } from '@/content/shared'
@@ -49,10 +50,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <section id="top" className="hero">
           <Window className="trainer-card">
             <p className="label">{t.hero.cardTitle.toUpperCase()}</p>
-            <h1 className="trainer-card__name">{t.hero.name}</h1>
-            <p className="trainer-card__role">{t.hero.role}</p>
-            <p className="muted">{t.hero.base}</p>
-            <p className="status">■ {t.hero.available.toUpperCase()}</p>
+            <div className="trainer-card__id">
+              <div className="trainer-card__portrait">
+                <PixelAvatar label={t.ui.avatarAlt} />
+              </div>
+              <div>
+                <h1 className="trainer-card__name">{t.hero.name}</h1>
+                <p className="trainer-card__role">{t.hero.role}</p>
+                <p className="muted">{t.hero.base}</p>
+                <p className="status">■ {t.hero.available.toUpperCase()}</p>
+              </div>
+            </div>
             <dl className="stats">
               {t.hero.stats.map((s) => (
                 <div key={s.label}>

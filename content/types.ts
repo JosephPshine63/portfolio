@@ -38,6 +38,7 @@ export type Dictionary = {
     online: string
     repo: string
     myRole: string
+    avatarAlt: string
   }
   hero: {
     cardTitle: string

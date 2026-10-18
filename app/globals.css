@@ -219,6 +219,40 @@ h3,
   gap: 16px;
 }
 
+.trainer-card__id {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.trainer-card__portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  background: var(--chip);
+  border: 3px solid var(--frame);
+  border-radius: 6px;
+}
+
+.pixel-avatar {
+  animation: avatar-bob 1.2s steps(2) infinite;
+}
+
+@keyframes avatar-bob {
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-avatar {
+    animation: none;
+  }
+}
+
 .trainer-card__name {
   margin: 0;
   font-size: 28px;
