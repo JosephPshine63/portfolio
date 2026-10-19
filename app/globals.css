@@ -384,6 +384,17 @@ ul.plain {
   color: var(--red);
 }
 
+/* Selected slot or card (pointer over it, keyboard focus inside, or tapped on
+   touch screens, where :hover sticks): the frame turns red like the game cursor. */
+.save-slot:not(.save-slot--empty):is(:hover, :focus-within),
+.project-card:is(:hover, :focus-within) {
+  border-color: var(--red);
+}
+
+.save-slot:is(:hover, :focus-within) .save-slot__head {
+  color: var(--red);
+}
+
 .save-slot__body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
