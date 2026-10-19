@@ -107,8 +107,29 @@ export const it: Dictionary = {
         tags: ['Spring Boot', 'Angular', 'Keycloak', 'Elasticsearch', 'Python'],
         details: [
           {
+            title: 'GDSI · Forze Armate',
             items: [
-              '[Da scrivere]',
+              'Sviluppato servizi Spring Boot in un team cross-funzionale, introducendo un nuovo ruolo Keycloak e aggiornando la configurazione Spring Security',
+              "Ottimizzato componenti Angular 14 e integrato Elasticsearch per l'indicizzazione e la ricerca avanzata",
+            ],
+          },
+          {
+            title: 'Whistleblowing · Ministero della Difesa',
+            items: [
+              'Sviluppato su una piattaforma di segnalazioni anonime basata su GlobaLeaks (open source), con backend Python (Twisted, SQLAlchemy), frontend Angular 18 e deploy su AWS',
+            ],
+          },
+          {
+            title: 'Comune di Roma · Lucilla e Casa Digitale del Cittadino',
+            items: [
+              'Ristrutturato il frontend Angular di Lucilla (delibere di giunta), rendendolo più manutenibile e leggibile, e scritto la documentazione tecnica e funzionale per il team',
+              "Gestito log applicativi e monitoraggio della Casa Digitale del Cittadino sull'orchestratore WSO2, con integrazione di Kafka",
+            ],
+          },
+          {
+            title: 'Su più progetti',
+            items: [
+              'Gestito le migrazioni di schema su Oracle con Liquibase e Spring Batch in un ambiente multi-team, mantenendo coerenti gli ambienti',
             ],
           },
         ],
