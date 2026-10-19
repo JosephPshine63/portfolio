@@ -22,6 +22,17 @@ export type Certification = {
   verify?: string
 }
 
+export type SaveSlot = {
+  org: string
+  role?: string
+  place?: string
+  period: string
+  current?: boolean
+  lines: string[]
+  tags?: string[]
+  details?: string[]
+}
+
 export type SkillGroup = { type: string; items: string[] }
 
 export type Dictionary = {
@@ -39,14 +50,18 @@ export type Dictionary = {
     repo: string
     myRole: string
     avatarAlt: string
+    prevProject: string
+    nextProject: string
+    goToProject: string
+    inserting: string
   }
   hero: {
     cardTitle: string
     name: string
     role: string
     base: string
-    available: string
     stats: { label: string; value: string }[]
+    subclasses: { label: string; items: string[] }
     dialog: string
     ctaProjects: string
     ctaCv: string
@@ -62,11 +77,13 @@ export type Dictionary = {
   journey: {
     title: string
     subtitle: string
-    past: { label: string; period: string; items: string[] }
-    present: { label: string; period: string; items: string[] }
-    future: { label: string; period: string; text: string }
+    slotLabel: string
+    detailsLabel: string
+    slots: SaveSlot[]
+    newGame: { label: string; text: string }
   }
   projects: { title: string; subtitle: string; items: Project[]; emptySlot: string }
+  caseStudy: { eject: string; sections: string[]; placeholder: string }
   skills: { title: string; subtitle: string; groups: SkillGroup[] }
   certifications: { title: string; subtitle: string; items: Certification[] }
   contact: { title: string; subtitle: string; question: string; text: string; links: Link[] }

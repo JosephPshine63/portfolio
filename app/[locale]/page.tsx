@@ -1,9 +1,11 @@
+import { CartridgeLink } from '@/components/CartridgeLink'
 import { LangSwitch } from '@/components/LangSwitch'
 import { PixelAvatar } from '@/components/PixelAvatar'
+import { ProjectCarousel } from '@/components/ProjectCarousel'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getDictionary, isLocale, type Locale } from '@/content'
 import { site } from '@/content/shared'
-import { profileJsonLd } from '@/lib/seo'
+import { profileJsonLd, projectPath } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import type { ReactNode } from 'react'
 
@@ -24,7 +26,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   if (!isLocale(locale)) notFound()
   const t = getDictionary(locale)
   const other: Locale = locale === 'it' ? 'en' : 'it'
-  const [featured, ...party] = t.projects.items
 
   return (
     <>
@@ -58,7 +59,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <h1 className="trainer-card__name">{t.hero.name}</h1>
                 <p className="trainer-card__role">{t.hero.role}</p>
                 <p className="muted">{t.hero.base}</p>
-                <p className="status">■ {t.hero.available.toUpperCase()}</p>
               </div>
             </div>
             <dl className="stats">
@@ -69,6 +69,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               ))}
             </dl>
+            <div className="subclasses">
+              <p className="label">{t.hero.subclasses.label.toUpperCase()}</p>
+              <ul className="chips">
+                {t.hero.subclasses.items.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </div>
           </Window>
           <div className="hero__side">
             <Window className="dialog">
@@ -122,71 +130,116 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         <section id="viaggio">
           <SectionTitle title={t.journey.title} subtitle={t.journey.subtitle} />
-          <div className="grid">
-            {[t.journey.past, t.journey.present].map((slot) => (
-              <Window key={slot.label}>
-                <p className="row pixel">
-                  <span>{slot.label.toUpperCase()}</span>
-                  <span className="muted">{slot.period}</span>
-                </p>
-                <ul className="plain">
-                  {slot.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </Window>
+          <ol className="save-slots">
+            {t.journey.slots.map((slot, i) => (
+              <li key={slot.org}>
+                <article className={`window save-slot${slot.current ? ' save-slot--current' : ''}`}>
+                  <p className="save-slot__head">
+                    <span>
+                      {t.journey.slotLabel.toUpperCase()} {i + 1}
+                    </span>
+                    {slot.current && <span aria-hidden="true">▶</span>}
+                  </p>
+                  <div className="save-slot__body">
+                    <div>
+                      <h3 className="save-slot__org">{slot.org}</h3>
+                      {slot.role && <p className="trainer-card__role">{slot.role}</p>}
+                      <p className="muted">
+                        {slot.period}
+                        {slot.place ? ` · ${slot.place}` : ''}
+                      </p>
+                    </div>
+                    <div className="save-slot__details">
+                      <ul className="plain">
+                        {slot.lines.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                      {slot.tags && (
+                        <ul className="chips">
+                          {slot.tags.map((tag) => (
+                            <li key={tag}>{tag}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                  {slot.details && (
+                    <details className="save-slot__more" open={slot.current}>
+                      <summary>{t.journey.detailsLabel.toUpperCase()}</summary>
+                      <ul className="plain">
+                        {slot.details.map((d) => (
+                          <li key={d}>{d}</li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </article>
+              </li>
             ))}
-            <Window className="window--dashed">
-              <p className="row pixel">
-                <span>{t.journey.future.label.toUpperCase()}</span>
-                <span className="muted">{t.journey.future.period}</span>
-              </p>
-              <p className="muted">{t.journey.future.text}</p>
-            </Window>
-          </div>
+            <li className="save-slot save-slot--empty">
+              <p className="pixel">{t.journey.newGame.label.toUpperCase()}</p>
+              <p className="muted">{t.journey.newGame.text}</p>
+            </li>
+          </ol>
         </section>
 
         <section id="progetti">
           <SectionTitle title={t.projects.title} subtitle={t.projects.subtitle} />
-          <div className="party">
-            <Window className="party__featured">
-              <h3 className="pixel">{featured.name}</h3>
-              <p className="muted">{featured.tagline}</p>
-              <p>{featured.description}</p>
-              <p className="muted">
-                <strong>{t.ui.myRole}:</strong> {featured.role}
-              </p>
-              <div className="actions">
-                <a className="button button--primary" href={`#${featured.slug}`}>
-                  ▶ {t.ui.caseStudy.toUpperCase()}
-                </a>
-                {featured.demo && (
-                  <a className="button" href={featured.demo}>
-                    {t.ui.demo.toUpperCase()}
-                  </a>
-                )}
-                {featured.code && (
-                  <a className="button" href={featured.code}>
-                    {t.ui.code.toUpperCase()}
-                  </a>
-                )}
-              </div>
-            </Window>
-            <ul className="plain party__list">
-              {party.map((p) => (
-                <li key={p.slug}>
-                  <a className="window party__slot" href={p.demo ?? p.code}>
-                    <span className="pixel">{p.name}</span>
-                    <span className="muted">{p.tagline}</span>
-                    <span className={p.status === 'online' ? 'status' : 'muted'}>
+          <ProjectCarousel
+            names={t.projects.items.map((p) => p.name)}
+            labels={{
+              list: t.projects.title,
+              prev: t.ui.prevProject,
+              next: t.ui.nextProject,
+              goTo: t.ui.goToProject,
+            }}
+          >
+            {t.projects.items.map((p) => (
+              <li key={p.slug}>
+                <article className="window project-card">
+                  {/* TODO: real screenshot per project */}
+                  <div className="project-card__screen" aria-hidden="true">
+                    {p.name}
+                  </div>
+                  <div className="project-card__head">
+                    <h3 className="pixel">{p.name}</h3>
+                    <span className={p.status === 'online' ? 'status pixel' : 'muted pixel'}>
                       {(p.status === 'online' ? t.ui.online : t.ui.repo).toUpperCase()}
                     </span>
-                  </a>
-                </li>
-              ))}
-              <li className="party__empty">— {t.projects.emptySlot} —</li>
-            </ul>
-          </div>
+                  </div>
+                  <p className="muted">{p.tagline}</p>
+                  <p>{p.description}</p>
+                  <ul className="chips">
+                    {p.stack.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                  <div className="actions project-card__actions">
+                    <CartridgeLink
+                      className="button button--primary"
+                      href={projectPath(locale, p.slug)}
+                      name={p.name}
+                      status={t.ui.inserting}
+                    >
+                      ▶ {t.ui.caseStudy.toUpperCase()}
+                    </CartridgeLink>
+                    {p.demo && (
+                      <a className="button" href={p.demo}>
+                        {t.ui.demo.toUpperCase()}
+                      </a>
+                    )}
+                    {p.code && (
+                      <a className="button" href={p.code}>
+                        {t.ui.code.toUpperCase()}
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </li>
+            ))}
+            <li className="carousel__empty">— {t.projects.emptySlot} —</li>
+          </ProjectCarousel>
         </section>
 
         <section id="mosse" className="grid">

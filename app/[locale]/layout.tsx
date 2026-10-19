@@ -40,6 +40,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} data-theme="day" className={`${pixel.variable} ${sans.variable}`} suppressHydrationWarning>
       <head>
+        {/* The site has its own night theme: ask Dark Reader not to restyle it
+            (its edits also break React hydration of the pixel SVGs). */}
+        <meta name="darkreader-lock" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>{children}</body>

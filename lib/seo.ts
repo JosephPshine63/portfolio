@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getDictionary, type Locale } from '@/content'
+import { getDictionary, locales, type Locale } from '@/content'
+import type { Project } from '@/content/types'
 import { site } from '@/content/shared'
 
 // Search Console verification carried over from the old index.html.
@@ -28,6 +29,30 @@ export function localeMetadata(locale: Locale): Metadata {
     },
     icons: { icon: '/assets/portfolio-logo.png' },
     verification: { google: googleVerification },
+  }
+}
+
+export function projectPath(locale: Locale, slug: string) {
+  return `/${locale}/projects/${slug}/`
+}
+
+// Case study pages reuse the locale metadata with their own title, description and URLs.
+export function projectMetadata(locale: Locale, project: Project): Metadata {
+  const base = localeMetadata(locale)
+  const path = projectPath(locale, project.slug)
+  const title = `${project.name} — ${project.tagline} · ${site.name}`
+  return {
+    ...base,
+    title,
+    description: project.description,
+    alternates: {
+      canonical: path,
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, projectPath(l, project.slug)])),
+        'x-default': projectPath('en', project.slug),
+      },
+    },
+    openGraph: { ...base.openGraph, type: 'article', url: path, title, description: project.description },
   }
 }
 

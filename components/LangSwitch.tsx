@@ -4,11 +4,11 @@ import type { Locale } from '@/content'
 
 // A plain link to the other locale; it also remembers the choice so that
 // "/" forwards to the same language next time.
-export function LangSwitch({ target, label }: { target: Locale; label: string }) {
+export function LangSwitch({ target, label, href = `/${target}/` }: { target: Locale; label: string; href?: string }) {
   return (
     <a
       className="chip-button"
-      href={`/${target}/`}
+      href={href}
       hrefLang={target}
       aria-label={label}
       onClick={() => {

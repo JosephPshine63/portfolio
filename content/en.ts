@@ -20,17 +20,21 @@ export const en: Dictionary = {
     repo: 'Repo',
     myRole: 'My role',
     avatarAlt: 'Pixel avatar of Giuseppe',
+    prevProject: 'Previous project',
+    nextProject: 'Next project',
+    goToProject: 'Go to',
+    inserting: 'Inserting cartridge…',
   },
   hero: {
     cardTitle: 'Trainer card',
     name: 'Giuseppe Pio Ruocco',
     role: 'Fullstack Software Engineer',
     base: 'Base: Naples',
-    available: 'Available',
     stats: [
       { label: 'LV', value: '3+ years' },
-      { label: 'Current class', value: 'Analyst SE' },
+      { label: 'Current class', value: 'Software Engineer' },
     ],
+    subclasses: { label: 'Subclasses', items: ['Fullstack Developer', 'DevOps', 'Product Engineer'] },
     dialog:
       'Hi! I’m Giuseppe.\nI build production systems, from Spring Boot APIs to Angular or React interfaces.\n3+ years across insurance, energy, public sector and healthcare.',
     ctaProjects: 'See the projects',
@@ -58,25 +62,61 @@ export const en: Dictionary = {
   journey: {
     title: 'Experience',
     subtitle: 'Journey',
-    past: {
-      label: 'Past',
-      period: '2018 – 2024',
-      items: [
-        'Computer science technical diploma · I.I.S. Pacinotti, 90/100',
-        'HMI Developer · IndSoftware, SCADA with Siemens TIA Portal',
-        'Software Engineer Academy · 248 hours, Openjobmetis',
-      ],
-    },
-    present: {
-      label: 'Present',
-      period: '2024 – now',
-      items: [
-        'Accenture · Generali (Angular, Java, Kafka, 200+ person team) and Terna (React, Java, Node.js, Kubernetes)',
-        'Sistemi Informativi (IBM Company) · Italian Armed Forces, Ministry of Defence, Municipality of Rome',
-      ],
-    },
+    slotLabel: 'Slot',
+    detailsLabel: 'Details',
+    slots: [
+      {
+        org: 'Accenture',
+        role: 'Analyst Software Engineer',
+        place: 'Naples',
+        period: '11/2025 – now',
+        current: true,
+        lines: [
+          'Generali · IIAB insurance platform in production across the EU, 200+ person team',
+          'Terna · management of Italy’s national electricity balancing market',
+        ],
+        tags: ['Angular', 'React', 'Java', 'Node.js', 'Kafka', 'Kubernetes'],
+        details: ['[To be written]'],
+      },
+      {
+        org: 'Sistemi Informativi (IBM Company)',
+        role: 'Software Engineer',
+        place: 'Rome',
+        period: '05/2024 – 09/2025',
+        lines: [
+          'Italian Armed Forces · infirmary medical records (GDSI)',
+          'Ministry of Defence · whistleblowing platform',
+          'Municipality of Rome · city council resolutions (Lucilla)',
+        ],
+        tags: ['Spring Boot', 'Angular', 'Keycloak', 'Elasticsearch', 'Python'],
+        details: ['[To be written]'],
+      },
+      {
+        org: 'IndSoftware',
+        role: 'HMI Developer',
+        place: 'Angri (SA)',
+        period: '11/2023 – 12/2023',
+        lines: ['SCADA/HMI applications for industrial PLC control'],
+        tags: ['Siemens TIA Portal', 'VBScript', 'SQL'],
+        details: ['[To be written]'],
+      },
+      {
+        org: 'Openjobmetis',
+        role: 'Software Engineer Academy',
+        period: '2024',
+        lines: ['248-hour training programme'],
+        details: ['[To be written]'],
+      },
+      {
+        org: 'I.I.S. Pacinotti',
+        role: 'Computer science technical diploma',
+        period: '2018 – 2023',
+        lines: ['Final grade 90/100'],
+        details: ['[To be written]'],
+      },
+    ],
     // TODO: copy to be written with Giuseppe
-    future: { label: 'Future', period: 'Next level', text: '[To be written]' },
+    newGame: { label: 'New game', text: '[To be written]' },
   },
   projects: {
     title: 'Projects',
@@ -126,6 +166,12 @@ export const en: Dictionary = {
         ...projectLinks.booktribe,
       },
     ],
+  },
+  caseStudy: {
+    eject: 'Eject cartridge',
+    // TODO: copy to be written with Giuseppe, one set per project
+    sections: ['The problem', 'Architecture', 'Technical choices', 'What I learned'],
+    placeholder: '[To be written]',
   },
   skills: {
     title: 'Skills',

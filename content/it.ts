@@ -20,17 +20,21 @@ export const it: Dictionary = {
     repo: 'Repo',
     myRole: 'Il mio ruolo',
     avatarAlt: 'Avatar pixel di Giuseppe',
+    prevProject: 'Progetto precedente',
+    nextProject: 'Progetto successivo',
+    goToProject: 'Vai a',
+    inserting: 'Inserimento cartuccia…',
   },
   hero: {
     cardTitle: 'Scheda allenatore',
     name: 'Giuseppe Pio Ruocco',
     role: 'Fullstack Software Engineer',
     base: 'Base: Napoli',
-    available: 'Disponibile',
     stats: [
       { label: 'LV', value: '3+ anni' },
-      { label: 'Classe attuale', value: 'Analyst SE' },
+      { label: 'Classe attuale', value: 'Software Engineer' },
     ],
+    subclasses: { label: 'Sottoclassi', items: ['Fullstack Developer', 'DevOps', 'Product Engineer'] },
     dialog:
       'Ciao! Sono Giuseppe.\nCostruisco sistemi in produzione, dall’API Spring Boot all’interfaccia Angular o React.\n3+ anni su assicurazioni, energia, PA e sanità.',
     ctaProjects: 'Vedi i progetti',
@@ -58,25 +62,61 @@ export const it: Dictionary = {
   journey: {
     title: 'Esperienza',
     subtitle: 'Viaggio',
-    past: {
-      label: 'Passato',
-      period: '2018 – 2024',
-      items: [
-        'Diploma tecnico informatico · I.I.S. Pacinotti, 90/100',
-        'HMI Developer · IndSoftware, SCADA con Siemens TIA Portal',
-        'Academy Software Engineer · 248 ore, Openjobmetis',
-      ],
-    },
-    present: {
-      label: 'Presente',
-      period: '2024 – oggi',
-      items: [
-        'Accenture · Generali (Angular, Java, Kafka, team di 200+) e Terna (React, Java, Node.js, Kubernetes)',
-        'Sistemi Informativi (IBM Company) · Forze Armate, Ministero della Difesa, Comune di Roma',
-      ],
-    },
+    slotLabel: 'Slot',
+    detailsLabel: 'Dettagli',
+    slots: [
+      {
+        org: 'Accenture',
+        role: 'Analyst Software Engineer',
+        place: 'Napoli',
+        period: '11/2025 – oggi',
+        current: true,
+        lines: [
+          'Generali · piattaforma assicurativa IIAB in produzione nell’UE, team di 200+',
+          'Terna · gestione del mercato di bilanciamento elettrico nazionale',
+        ],
+        tags: ['Angular', 'React', 'Java', 'Node.js', 'Kafka', 'Kubernetes'],
+        details: ['[Da scrivere]'],
+      },
+      {
+        org: 'Sistemi Informativi (IBM Company)',
+        role: 'Software Engineer',
+        place: 'Roma',
+        period: '05/2024 – 09/2025',
+        lines: [
+          'Forze Armate · dati sanitari delle infermerie (GDSI)',
+          'Ministero della Difesa · piattaforma di whistleblowing',
+          'Comune di Roma · gestione delle delibere (Lucilla)',
+        ],
+        tags: ['Spring Boot', 'Angular', 'Keycloak', 'Elasticsearch', 'Python'],
+        details: ['[Da scrivere]'],
+      },
+      {
+        org: 'IndSoftware',
+        role: 'HMI Developer',
+        place: 'Angri (SA)',
+        period: '11/2023 – 12/2023',
+        lines: ['Applicazioni SCADA/HMI per il controllo di PLC industriali'],
+        tags: ['Siemens TIA Portal', 'VBScript', 'SQL'],
+        details: ['[Da scrivere]'],
+      },
+      {
+        org: 'Openjobmetis',
+        role: 'Academy Software Engineer',
+        period: '2024',
+        lines: ['Percorso di formazione da 248 ore'],
+        details: ['[Da scrivere]'],
+      },
+      {
+        org: 'I.I.S. Pacinotti',
+        role: 'Diploma tecnico informatico',
+        period: '2018 – 2023',
+        lines: ['Voto finale 90/100'],
+        details: ['[Da scrivere]'],
+      },
+    ],
     // TODO: testo da scrivere con Giuseppe
-    future: { label: 'Futuro', period: 'Prossimo livello', text: '[Da scrivere]' },
+    newGame: { label: 'Nuova partita', text: '[Da scrivere]' },
   },
   projects: {
     title: 'Progetti',
@@ -126,6 +166,12 @@ export const it: Dictionary = {
         ...projectLinks.booktribe,
       },
     ],
+  },
+  caseStudy: {
+    eject: 'Espelli cartuccia',
+    // TODO: testi da scrivere con Giuseppe, un set per progetto
+    sections: ['Il problema', 'Architettura', 'Scelte tecniche', 'Cosa ho imparato'],
+    placeholder: '[Da scrivere]',
   },
   skills: {
     title: 'Skill',
