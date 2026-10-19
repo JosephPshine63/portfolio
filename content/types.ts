@@ -22,6 +22,9 @@ export type Certification = {
   verify?: string
 }
 
+// Optional title, e.g. the client project the items belong to.
+export type DetailGroup = { title?: string; items: string[] }
+
 export type SaveSlot = {
   org: string
   role?: string
@@ -30,7 +33,7 @@ export type SaveSlot = {
   current?: boolean
   lines: string[]
   tags?: string[]
-  details?: string[]
+  details?: DetailGroup[]
 }
 
 export type ContactForm = {

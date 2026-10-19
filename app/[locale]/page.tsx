@@ -162,11 +162,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {slot.details && (
                     <details className="save-slot__more" open={slot.current}>
                       <summary>{t.journey.detailsLabel.toUpperCase()}</summary>
-                      <ul className="plain">
-                        {slot.details.map((d) => (
-                          <li key={d}>{d}</li>
-                        ))}
-                      </ul>
+                      {slot.details.map((g) => (
+                        <div key={g.title ?? g.items[0]} className="save-slot__group">
+                          {g.title && <p className="label">{g.title.toUpperCase()}</p>}
+                          <ul className="plain">
+                            {g.items.map((d) => (
+                              <li key={d}>{d}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </details>
                   )}
                 </article>

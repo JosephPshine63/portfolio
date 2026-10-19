@@ -466,6 +466,14 @@ ul.plain {
   content: '▼';
 }
 
+.save-slot__group + .save-slot__group {
+  margin-top: 16px;
+}
+
+.save-slot__group .label {
+  margin-bottom: 6px;
+}
+
 .save-slot--empty {
   display: flex;
   flex-wrap: wrap;

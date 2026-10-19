@@ -75,7 +75,24 @@ export const en: Dictionary = {
           'Terna · management of Italy’s national electricity balancing market',
         ],
         tags: ['Angular', 'React', 'Java', 'Node.js', 'Kafka', 'Kubernetes'],
-        details: ['[To be written]'],
+        details: [
+          {
+            title: 'Generali · IIAB',
+            items: [
+              'Led the development of user stories for insurance and banking workflows, updating Angular 16+ components and data on Oracle and PostgreSQL',
+              'Built Java Spring Boot endpoints for the core insurance business logic, with event handling on Kafka',
+              'Shipped across ~8 two-week sprints with GitFlow, systematic code reviews, AWS deployments and client demos',
+            ],
+          },
+          {
+            title: 'Terna · MSD',
+            items: [
+              'Built both the frontend (React, TypeScript) and the backend services (Java, Node.js) of a microservices platform',
+              'Integrated Oracle and MongoDB, with asynchronous batch processing and real-time WebSocket notifications',
+              'Managed Kubernetes deployments (OpenShift and AWS) and CI/CD pipelines on GitLab',
+            ],
+          },
+        ],
       },
       {
         org: 'Sistemi Informativi (IBM Company)',
@@ -88,30 +105,61 @@ export const en: Dictionary = {
           'Municipality of Rome · city council resolutions (Lucilla)',
         ],
         tags: ['Spring Boot', 'Angular', 'Keycloak', 'Elasticsearch', 'Python'],
-        details: ['[To be written]'],
+        details: [
+          {
+            items: [
+              '[To be written]',
+            ],
+          },
+        ],
       },
       {
         org: 'IndSoftware',
         role: 'HMI Developer',
         place: 'Angri (SA)',
         period: '11/2023 – 12/2023',
-        lines: ['SCADA/HMI applications for industrial PLC control'],
+        lines: ['Project contract · industrial automation'],
         tags: ['Siemens TIA Portal', 'VBScript', 'SQL'],
-        details: ['[To be written]'],
+        details: [
+          {
+            items: [
+              'Built SCADA/HMI applications for industrial PLC control with Siemens TIA Portal and MS Access',
+              'Implemented the business logic in VBScript and SQL for Oracle database access, supporting production processes',
+            ],
+          },
+        ],
       },
       {
         org: 'Openjobmetis',
         role: 'Software Engineer Academy',
-        period: '2024',
-        lines: ['248-hour training programme'],
-        details: ['[To be written]'],
+        place: 'Rome',
+        period: '02/2024 – 03/2024',
+        lines: ['Intensive 248-hour academy, with a Software Engineer qualification certificate'],
+        details: [
+          {
+            items: [
+              'Backend: Java SE/EE, Spring (Core, MVC, Boot, Data JPA, Cloud), Maven, Gradle',
+              'Frontend: HTML5, CSS, Bootstrap, JavaScript, React, Angular',
+              'MySQL and MongoDB databases, monolithic and microservices REST architectures (API Gateway, health checks)',
+              'Design patterns (Facade, Factory, Strategy, Singleton, Builder) and architectural patterns (DTO, DAO, MVC, IoC), Docker and Git',
+            ],
+          },
+        ],
       },
       {
         org: 'I.I.S. Pacinotti',
         role: 'Computer science technical diploma',
+        place: 'Scafati (SA)',
         period: '2018 – 2023',
         lines: ['Final grade 90/100'],
-        details: ['[To be written]'],
+        details: [
+          {
+            items: [
+              'Front-end and back-end programming, networking, cryptography, database design and OOP',
+              'Languages: Java, C, PHP, SQL, HTML, CSS, JavaScript',
+            ],
+          },
+        ],
       },
     ],
     // TODO: copy to be written with Giuseppe

@@ -75,7 +75,24 @@ export const it: Dictionary = {
           'Terna · gestione del mercato di bilanciamento elettrico nazionale',
         ],
         tags: ['Angular', 'React', 'Java', 'Node.js', 'Kafka', 'Kubernetes'],
-        details: ['[Da scrivere]'],
+        details: [
+          {
+            title: 'Generali · IIAB',
+            items: [
+              'Guidato lo sviluppo di user story sui flussi assicurativi e bancari, aggiornando i componenti Angular 16+ e i dati su Oracle e PostgreSQL',
+              'Sviluppato endpoint Java Spring Boot per la logica di business assicurativa, con la gestione degli eventi su Kafka',
+              'Rilasciato in ~8 sprint bisettimanali con GitFlow, code review sistematiche, deploy su AWS e demo al cliente',
+            ],
+          },
+          {
+            title: 'Terna · MSD',
+            items: [
+              'Realizzato sia il frontend (React, TypeScript) sia i servizi backend (Java, Node.js) di una piattaforma a microservizi',
+              'Integrato Oracle e MongoDB, con elaborazioni batch asincrone e notifiche in tempo reale via WebSocket',
+              'Gestito il deploy su Kubernetes (OpenShift e AWS) e le pipeline CI/CD su GitLab',
+            ],
+          },
+        ],
       },
       {
         org: 'Sistemi Informativi (IBM Company)',
@@ -88,30 +105,61 @@ export const it: Dictionary = {
           'Comune di Roma · gestione delle delibere (Lucilla)',
         ],
         tags: ['Spring Boot', 'Angular', 'Keycloak', 'Elasticsearch', 'Python'],
-        details: ['[Da scrivere]'],
+        details: [
+          {
+            items: [
+              '[Da scrivere]',
+            ],
+          },
+        ],
       },
       {
         org: 'IndSoftware',
         role: 'HMI Developer',
         place: 'Angri (SA)',
         period: '11/2023 – 12/2023',
-        lines: ['Applicazioni SCADA/HMI per il controllo di PLC industriali'],
+        lines: ['Contratto a progetto · automazione industriale'],
         tags: ['Siemens TIA Portal', 'VBScript', 'SQL'],
-        details: ['[Da scrivere]'],
+        details: [
+          {
+            items: [
+              'Sviluppato applicazioni SCADA/HMI per il controllo di PLC industriali con Siemens TIA Portal e MS Access',
+              "Implementato la logica di business in VBScript e SQL per l'interazione con database Oracle, a supporto dei processi di produzione",
+            ],
+          },
+        ],
       },
       {
         org: 'Openjobmetis',
         role: 'Academy Software Engineer',
-        period: '2024',
-        lines: ['Percorso di formazione da 248 ore'],
-        details: ['[Da scrivere]'],
+        place: 'Roma',
+        period: '02/2024 – 03/2024',
+        lines: ['Academy intensiva di 248 ore, con attestato di qualifica Software Engineer'],
+        details: [
+          {
+            items: [
+              'Backend: Java SE/EE, Spring (Core, MVC, Boot, Data JPA, Cloud), Maven, Gradle',
+              'Frontend: HTML5, CSS, Bootstrap, JavaScript, React, Angular',
+              'Database MySQL e MongoDB, architetture REST monolitiche e a microservizi (API Gateway, health check)',
+              'Design pattern (Facade, Factory, Strategy, Singleton, Builder) e architetturali (DTO, DAO, MVC, IoC), Docker e Git',
+            ],
+          },
+        ],
       },
       {
         org: 'I.I.S. Pacinotti',
         role: 'Diploma tecnico informatico',
+        place: 'Scafati (SA)',
         period: '2018 – 2023',
         lines: ['Voto finale 90/100'],
-        details: ['[Da scrivere]'],
+        details: [
+          {
+            items: [
+              'Programmazione front-end e back-end, networking, crittografia, progettazione di database e paradigma OOP',
+              'Linguaggi: Java, C, PHP, SQL, HTML, CSS, JavaScript',
+            ],
+          },
+        ],
       },
     ],
     // TODO: testo da scrivere con Giuseppe
