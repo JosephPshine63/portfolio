@@ -87,7 +87,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <a className="button button--primary" href="#progetti">
                 ▶ {t.hero.ctaProjects.toUpperCase()}
               </a>
-              <a className="button" href={site.cv}>
+              <a className="button" href={site.cv} target="_blank" rel="noopener">
                 {t.hero.ctaCv.toUpperCase()}
               </a>
             </div>
@@ -277,7 +277,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <ul className="plain">
                 {t.certifications.items.map((c) => (
                   <li key={c.name} className="row">
-                    <span>{c.name}</span>
+                    <span>
+                      {c.verify ? (
+                        <a href={c.verify} target="_blank" rel="noopener noreferrer">
+                          {c.name} ↗
+                        </a>
+                      ) : (
+                        c.name
+                      )}
+                    </span>
                     <span className="muted">
                       {c.issuer}
                       {c.date ? ` · ${c.date}` : ''}

@@ -10,7 +10,7 @@ export const site = {
   // Web3Forms access key: public by design, it only lets the form send mail to
   // the address it was registered with.
   web3formsKey: 'e885a104-b3da-448f-8dcc-429333253be5',
-  cv: '#cv', // TODO: link to the published CV PDF
+  cv: '/cv/CV_Giuseppe_Pio_Ruocco.pdf',
 } as const
 
 export const projectLinks = {

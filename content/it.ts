@@ -311,7 +311,12 @@ export const it: Dictionary = {
     title: 'Certificazioni',
     subtitle: 'Medaglie',
     items: [
-      { name: 'Certified Junior Angular Developer', issuer: 'Certificates.dev', date: '09/2026' },
+      {
+        name: 'Certified Junior Angular Developer',
+        issuer: 'Certificates.dev',
+        date: '09/2026',
+        verify: 'https://certificates.dev/c/a2d8323c-26e2-437c-9c89-fd9b605c9520',
+      },
       { name: 'Anthropic Academy · 6 corsi', issuer: 'Anthropic', date: '04/2026' },
       { name: 'Enterprise OAuth 2.0 and OpenID Connect', issuer: 'Viraj Shetty', date: '11/2025' },
       { name: 'Mastering Java Reactive Programming', issuer: 'Vinoth Selvaraj', date: '11/2025' },
@@ -340,7 +345,6 @@ export const it: Dictionary = {
       sending: 'Invio in corso…',
       sent: 'Messaggio inviato! Ti rispondo appena posso.',
       error: 'Il messaggio non è partito. Riprova o scrivimi direttamente a',
-      privacy: 'Uso nome ed email solo per risponderti.',
     },
   },
   footer: 'Giuseppe Pio Ruocco · Napoli',

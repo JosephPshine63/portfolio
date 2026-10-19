@@ -47,7 +47,6 @@ export type ContactForm = {
   sending: string
   sent: string
   error: string
-  privacy: string
 }
 
 export type SkillGroup = { type: string; items: string[] }

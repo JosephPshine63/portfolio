@@ -45,7 +45,6 @@ export function ContactForm({ t }: { t: Texts }) {
         <textarea id="cf-message" name="message" placeholder={t.placeholders.message} required maxLength={5000} />
       </div>
       <input className="contact-form__trap" type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" />
-      <p className="muted">{t.privacy}</p>
       <button type="submit" className="button button--primary" disabled={status === 'sending'}>
         {status === 'sending' ? t.sending : `▶ ${t.submit.toUpperCase()}`}
       </button>

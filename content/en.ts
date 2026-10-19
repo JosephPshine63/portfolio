@@ -311,7 +311,12 @@ export const en: Dictionary = {
     title: 'Certifications',
     subtitle: 'Badges',
     items: [
-      { name: 'Certified Junior Angular Developer', issuer: 'Certificates.dev', date: '09/2026' },
+      {
+        name: 'Certified Junior Angular Developer',
+        issuer: 'Certificates.dev',
+        date: '09/2026',
+        verify: 'https://certificates.dev/c/a2d8323c-26e2-437c-9c89-fd9b605c9520',
+      },
       { name: 'Anthropic Academy · 6 courses', issuer: 'Anthropic', date: '04/2026' },
       { name: 'Enterprise OAuth 2.0 and OpenID Connect', issuer: 'Viraj Shetty', date: '11/2025' },
       { name: 'Mastering Java Reactive Programming', issuer: 'Vinoth Selvaraj', date: '11/2025' },
@@ -340,7 +345,6 @@ export const en: Dictionary = {
       sending: 'Sending…',
       sent: 'Message sent! I will reply as soon as I can.',
       error: 'The message did not go through. Try again or write to me directly at',
-      privacy: 'I only use your name and email to reply to you.',
     },
   },
   footer: 'Giuseppe Pio Ruocco · Naples, Italy',
