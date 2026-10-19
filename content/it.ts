@@ -197,7 +197,7 @@ export const it: Dictionary = {
         name: 'WacChat',
         tagline: 'Chat in tempo reale a microservizi',
         description:
-          'Microservizi Spring Boot 3: gateway, file, notifiche e chiamate WebRTC. Keycloak con login Google, STOMP su RabbitMQ, observability con Prometheus, Grafana, Loki e Tempo.',
+          'Microservizi Spring Boot 3: gateway, file, notifiche e chiamate WebRTC. Keycloak con tema personalizzato, STOMP su RabbitMQ, observability con Prometheus, Grafana, Loki e Tempo.',
         role: 'Progetto personale, dall’architettura al deploy.',
         stack: ['Spring Boot 3', 'Angular 19', 'Keycloak', 'RabbitMQ', 'WebRTC', 'PostgreSQL'],
         status: 'online',
