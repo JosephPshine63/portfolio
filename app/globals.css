@@ -638,6 +638,85 @@ ul.plain {
   box-shadow: inset 0 0 0 3px var(--red);
 }
 
+.contact-form {
+  max-width: 720px;
+  margin: 24px auto 0;
+}
+
+.contact-form__title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-family: var(--font-pixel), monospace;
+  font-size: 17px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 3px solid var(--frame);
+  border-radius: 6px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  border-color: var(--red);
+  outline: none;
+}
+
+/* Spam trap: hidden from people, bots fill it in and Web3Forms drops the message. */
+.contact-form__trap {
+  position: absolute;
+  left: -9999px;
+}
+
+.contact-form .button {
+  align-self: flex-start;
+}
+
+.contact-form .button:disabled {
+  opacity: 0.6;
+  cursor: var(--cursor-arrow);
+}
+
+.contact-form__status {
+  padding: 12px 16px;
+  font-family: var(--font-pixel), monospace;
+  border: 3px solid var(--frame);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 3px var(--red);
+}
+
 .menu a {
   display: flex;
   align-items: center;

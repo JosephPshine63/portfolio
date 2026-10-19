@@ -33,6 +33,19 @@ export type SaveSlot = {
   details?: string[]
 }
 
+export type ContactForm = {
+  title: string
+  name: string
+  email: string
+  message: string
+  placeholders: { name: string; email: string; message: string }
+  submit: string
+  sending: string
+  sent: string
+  error: string
+  privacy: string
+}
+
 export type SkillGroup = { type: string; items: string[] }
 
 export type Dictionary = {
@@ -86,6 +99,6 @@ export type Dictionary = {
   caseStudy: { eject: string; sections: string[]; placeholder: string }
   skills: { title: string; subtitle: string; groups: SkillGroup[] }
   certifications: { title: string; subtitle: string; items: Certification[] }
-  contact: { title: string; subtitle: string; question: string; text: string; links: Link[] }
+  contact: { title: string; subtitle: string; question: string; text: string; links: Link[]; form: ContactForm }
   footer: string
 }

@@ -1,4 +1,5 @@
 import { CartridgeLink } from '@/components/CartridgeLink'
+import { ContactForm } from '@/components/ContactForm'
 import { LangSwitch } from '@/components/LangSwitch'
 import { PixelAvatar } from '@/components/PixelAvatar'
 import { ProjectCarousel } from '@/components/ProjectCarousel'
@@ -282,15 +283,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <p className="muted">{t.contact.text}</p>
             </div>
             <ul className="plain menu">
-              {t.contact.links.map((l, i) => (
+              {t.contact.links.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href}>
-                    {i === 0 ? '▶ ' : ''}
-                    {l.label.toUpperCase()}
-                  </a>
+                  <a href={l.href}>{l.label.toUpperCase()}</a>
                 </li>
               ))}
             </ul>
+          </Window>
+          <Window className="contact-form">
+            <h3 className="contact-form__title">{t.contact.form.title}</h3>
+            <ContactForm t={t.contact.form} />
           </Window>
         </section>
       </main>
