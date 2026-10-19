@@ -13,6 +13,7 @@ export type Project = {
   status: 'online' | 'repo'
   demo?: string
   code?: string
+  details?: DetailGroup[]
 }
 
 export type Certification = {
@@ -97,7 +98,7 @@ export type Dictionary = {
     slots: SaveSlot[]
     newGame: { label: string; text: string }
   }
-  projects: { title: string; subtitle: string; items: Project[]; emptySlot: string }
+  projects: { title: string; subtitle: string; items: Project[]; emptySlot: string; moreLabel: string }
   caseStudy: { eject: string; sections: string[]; placeholder: string }
   skills: { title: string; subtitle: string; groups: SkillGroup[] }
   certifications: { title: string; subtitle: string; items: Certification[] }

@@ -190,6 +190,7 @@ export const it: Dictionary = {
     title: 'Progetti',
     subtitle: 'Squadra',
     emptySlot: 'Slot libero',
+    moreLabel: 'Mostra di più',
     items: [
       {
         slug: 'wacchat',
@@ -201,6 +202,26 @@ export const it: Dictionary = {
         stack: ['Spring Boot 3', 'Angular 19', 'Keycloak', 'RabbitMQ', 'WebRTC', 'PostgreSQL'],
         status: 'online',
         ...projectLinks.wacchat,
+        details: [
+          {
+            title: 'Cosa ho fatto',
+            items: [
+              '5 microservizi Spring Boot (gateway, backend, file, notifiche, chiamate WebRTC) con una libreria di sicurezza condivisa, e un frontend Angular 19 con client generato da OpenAPI',
+            ],
+          },
+          {
+            title: 'Sfida tecnica',
+            items: [
+              'Messaggi e segnalazione delle chiamate in tempo reale con STOMP su RabbitMQ, separando le notifiche dal backend in un servizio dedicato',
+            ],
+          },
+          {
+            title: 'Scelta di cui vado fiero',
+            items: [
+              'Deploy automatico sul mio server: la CI esegue i test, entra in rete via Tailscale, ridistribuisce solo i servizi toccati dal commit e torna alla versione precedente se un health check fallisce. Testata da amici e parenti',
+            ],
+          },
+        ],
       },
       {
         slug: 'gprflow',
@@ -212,6 +233,26 @@ export const it: Dictionary = {
         stack: ['React', 'Redux', 'Spring Cloud Gateway', 'PostgreSQL', 'Stripe'],
         status: 'online',
         ...projectLinks.gprflow,
+        details: [
+          {
+            title: 'Cosa ho fatto',
+            items: [
+              'Piattaforma di trading crypto con React e Redux: dati live da CoinGecko, portafoglio e ordini, depositi con Stripe e un chatbot Gemini',
+            ],
+          },
+          {
+            title: 'Sfida tecnica',
+            items: [
+              'Migrazione incrementale da un monolite Spring Boot a microservizi (auth, utenti, ledger, mercato, chatbot), un dominio alla volta, ognuno con il suo schema PostgreSQL',
+            ],
+          },
+          {
+            title: 'Scelta di cui vado fiero',
+            items: [
+              "Sicurezza al gateway: il JWT viene validato una sola volta e i servizi ricevono l'identità già verificata, con rate limiting per IP e Cloudflare Turnstile sui login",
+            ],
+          },
+        ],
       },
       {
         slug: 'piocart',
@@ -222,6 +263,13 @@ export const it: Dictionary = {
         stack: ['Java 17', 'Spring Boot 3', 'PostgreSQL', 'Docker Compose'],
         status: 'repo',
         ...projectLinks.piocart,
+        details: [
+          {
+            items: [
+              'Modello JPA di un e-commerce (prodotti, categorie, carrello, ordini, utenti, immagini), con DTO tramite ModelMapper e PostgreSQL in Docker',
+            ],
+          },
+        ],
       },
       {
         slug: 'booktribe',
@@ -232,6 +280,13 @@ export const it: Dictionary = {
         stack: ['Spring Cloud', 'Angular', 'Keycloak'],
         status: 'repo',
         ...projectLinks.booktribe,
+        details: [
+          {
+            items: [
+              'Social per il prestito di libri: prestito, restituzione approvata dal proprietario e recensioni, con autenticazione Keycloak e client Angular generato da OpenAPI',
+            ],
+          },
+        ],
       },
     ],
   },

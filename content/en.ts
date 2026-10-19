@@ -190,6 +190,7 @@ export const en: Dictionary = {
     title: 'Projects',
     subtitle: 'Party',
     emptySlot: 'Free slot',
+    moreLabel: 'Show more',
     items: [
       {
         slug: 'wacchat',
@@ -201,6 +202,26 @@ export const en: Dictionary = {
         stack: ['Spring Boot 3', 'Angular 19', 'Keycloak', 'RabbitMQ', 'WebRTC', 'PostgreSQL'],
         status: 'online',
         ...projectLinks.wacchat,
+        details: [
+          {
+            title: 'What I built',
+            items: [
+              '5 Spring Boot microservices (gateway, backend, files, notifications, WebRTC calls) with a shared security library, and an Angular 19 frontend with an OpenAPI-generated client',
+            ],
+          },
+          {
+            title: 'Technical challenge',
+            items: [
+              'Real-time messaging and call signalling with STOMP over RabbitMQ, moving notifications out of the backend into a dedicated service',
+            ],
+          },
+          {
+            title: "A choice I'm proud of",
+            items: [
+              'Automated deployment to my own server: CI runs the tests, joins the network via Tailscale, redeploys only the services the commit touched and rolls back if a health check fails. Tested by friends and family',
+            ],
+          },
+        ],
       },
       {
         slug: 'gprflow',
@@ -212,6 +233,26 @@ export const en: Dictionary = {
         stack: ['React', 'Redux', 'Spring Cloud Gateway', 'PostgreSQL', 'Stripe'],
         status: 'online',
         ...projectLinks.gprflow,
+        details: [
+          {
+            title: 'What I built',
+            items: [
+              'Crypto trading platform with React and Redux: live CoinGecko market data, portfolio and orders, Stripe deposits and a Gemini chatbot',
+            ],
+          },
+          {
+            title: 'Technical challenge',
+            items: [
+              'Incremental migration from a Spring Boot monolith to microservices (auth, users, ledger, market data, chatbot), one domain at a time, each with its own PostgreSQL schema',
+            ],
+          },
+          {
+            title: "A choice I'm proud of",
+            items: [
+              'Security at the gateway: the JWT is validated once and services receive the verified identity, with per-IP rate limiting and Cloudflare Turnstile on login',
+            ],
+          },
+        ],
       },
       {
         slug: 'piocart',
@@ -222,6 +263,13 @@ export const en: Dictionary = {
         stack: ['Java 17', 'Spring Boot 3', 'PostgreSQL', 'Docker Compose'],
         status: 'repo',
         ...projectLinks.piocart,
+        details: [
+          {
+            items: [
+              'JPA model of an e-commerce store (products, categories, cart, orders, users, images), with DTOs via ModelMapper and PostgreSQL in Docker',
+            ],
+          },
+        ],
       },
       {
         slug: 'booktribe',
@@ -232,6 +280,13 @@ export const en: Dictionary = {
         stack: ['Spring Cloud', 'Angular', 'Keycloak'],
         status: 'repo',
         ...projectLinks.booktribe,
+        details: [
+          {
+            items: [
+              'Book-lending social network: borrowing, owner-approved returns and reviews, with Keycloak authentication and an OpenAPI-generated Angular client',
+            ],
+          },
+        ],
       },
     ],
   },
