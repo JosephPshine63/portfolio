@@ -57,7 +57,6 @@ export const it: Dictionary = {
       ],
     },
     stack: { label: 'Stack principale', items: ['Java', 'Spring Boot', 'Angular', 'React', 'Kubernetes'] },
-    question: { title: 'Hai una domanda?', button: 'Copia la mia email' },
   },
   journey: {
     title: 'Esperienza',

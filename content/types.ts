@@ -85,7 +85,6 @@ export type Dictionary = {
     mission: { label: string; text: string }
     languages: { label: string; items: { name: string; level: string }[] }
     stack: { label: string; items: string[] }
-    question: { title: string; button: string }
   }
   journey: {
     title: string
