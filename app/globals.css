@@ -42,6 +42,36 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Pixel cursors (public/cursor-*.svg): arrow on the page, hand on anything
+   clickable. Only with a mouse; touch screens and unsupported browsers keep the
+   system cursors. Paragraphs show the I-beam so text can still be selected. */
+:root {
+  --cursor-arrow: default;
+  --cursor-hand: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --cursor-arrow: url('/cursor-arrow.svg') 0 0, default;
+    --cursor-hand: url('/cursor-hand.svg') 9 1, pointer;
+  }
+
+  body {
+    cursor: var(--cursor-arrow);
+  }
+
+  :where(p, dd, blockquote, input, textarea) {
+    cursor: text;
+  }
+}
+
+a,
+button,
+summary,
+label[for] {
+  cursor: var(--cursor-hand);
+}
+
 /* Keep anchored sections clear of the sticky header. */
 section[id] {
   scroll-margin-top: 96px;
@@ -176,7 +206,7 @@ h3,
   border: 3px solid var(--frame);
   border-radius: 6px;
   text-decoration: none;
-  cursor: pointer;
+  cursor: var(--cursor-hand);
 }
 
 .section-title {
@@ -425,7 +455,7 @@ ul.plain {
   font-family: var(--font-pixel), monospace;
   color: var(--blue);
   list-style: none;
-  cursor: pointer;
+  cursor: var(--cursor-hand);
 }
 
 .save-slot__more summary::-webkit-details-marker {
@@ -490,7 +520,7 @@ ul.plain {
   color: var(--ink);
   background: none;
   border: 0;
-  cursor: pointer;
+  cursor: var(--cursor-hand);
 }
 
 .carousel__dot[aria-current] {
@@ -505,7 +535,7 @@ ul.plain {
 
 .chip-button:disabled {
   opacity: 0.4;
-  cursor: default;
+  cursor: var(--cursor-arrow);
 }
 
 /* Native horizontal scroll with snapping; the next card peeks in at the edge. */
