@@ -319,7 +319,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           />
         </section>
 
-        <section id="salva">
+        <section id="salva" className="contact-grid">
           <Window className="contact">
             <div>
               <SectionTitle title={t.contact.title} subtitle={t.contact.subtitle} />
