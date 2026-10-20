@@ -3,6 +3,7 @@ import { ContactForm } from '@/components/ContactForm'
 import { LangSwitch } from '@/components/LangSwitch'
 import { PixelAvatar } from '@/components/PixelAvatar'
 import { ProjectCarousel } from '@/components/ProjectCarousel'
+import { ProjectScreen } from '@/components/ProjectScreen'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getDictionary, isLocale, type Locale } from '@/content'
 import { site } from '@/content/shared'
@@ -200,10 +201,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {t.projects.items.map((p) => (
               <li key={p.slug}>
                 <article className="window project-card">
-                  {/* TODO: real screenshot per project */}
-                  <div className="project-card__screen" aria-hidden="true">
-                    {p.name}
-                  </div>
+                  <ProjectScreen project={p} />
                   <div className="project-card__head">
                     <h3 className="pixel">{p.name}</h3>
                     <span className={p.status === 'online' ? 'status pixel' : 'muted pixel'}>

@@ -586,13 +586,20 @@ ul.plain {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 180px;
+  /* Same shape as the screenshots (1600×862), so they are never cropped. */
+  aspect-ratio: 1600 / 862;
   font-family: var(--font-pixel), monospace;
   font-size: 32px;
   color: var(--muted);
   background: var(--chip);
   border: 3px solid var(--frame);
   border-radius: 6px;
+}
+
+.project-card__screen--image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .project-card__head {
@@ -750,8 +757,36 @@ ul.plain {
 }
 
 .case-study__screen {
-  height: 280px;
   font-size: 44px;
+}
+
+/* Case study screenshots: one at a time, full width. */
+.carousel--screens .carousel__track {
+  grid-auto-columns: 100%;
+}
+
+.carousel--screens figure {
+  width: 100%;
+  margin: 0;
+}
+
+.carousel--screens img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1600 / 862;
+  background: var(--chip);
+  border: 3px solid var(--frame);
+  border-radius: 6px;
+}
+
+.carousel--screens a:is(:hover, :focus-visible) img {
+  border-color: var(--red);
+}
+
+.carousel--screens figcaption {
+  margin-top: 6px;
+  font-size: 14px;
 }
 
 .case-study__title {

@@ -1,4 +1,6 @@
 import { LangSwitch } from '@/components/LangSwitch'
+import { ProjectCarousel } from '@/components/ProjectCarousel'
+import { ProjectScreen } from '@/components/ProjectScreen'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getDictionary, isLocale, locales, type Locale } from '@/content'
 import { projectMetadata, projectPath } from '@/lib/seo'
@@ -50,10 +52,31 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
 
       <main className="page case-study">
         <section className="window case-study__intro">
-          {/* TODO: real screenshot per project */}
-          <div className="project-card__screen case-study__screen" aria-hidden="true">
-            {project.name}
-          </div>
+          {project.screens ? (
+            <ProjectCarousel
+              className="carousel--screens"
+              names={project.screens.map((s) => s.caption)}
+              labels={{
+                list: t.caseStudy.gallery,
+                prev: t.caseStudy.prevScreen,
+                next: t.caseStudy.nextScreen,
+                goTo: t.ui.goToProject,
+              }}
+            >
+              {project.screens.map((s) => (
+                <li key={s.src}>
+                  <figure>
+                    <a href={s.src}>
+                      <img src={s.src} alt={`${project.name}: ${s.caption}`} />
+                    </a>
+                    <figcaption className="muted">{s.caption}</figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ProjectCarousel>
+          ) : (
+            <ProjectScreen project={project} className="case-study__screen" />
+          )}
           <div className="project-card__head">
             <h1 className="case-study__title">{project.name}</h1>
             <span className={project.status === 'online' ? 'status pixel' : 'muted pixel'}>

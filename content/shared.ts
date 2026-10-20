@@ -19,3 +19,6 @@ export const projectLinks = {
   piocart: { demo: 'https://pio-cart-psi.vercel.app', code: 'https://github.com/JosephPshine63/PioCart' },
   booktribe: { code: 'https://github.com/JosephPshine63/BookTribe' },
 } as const
+
+// Screenshots live in public/projects/<slug>/<name>.webp.
+export const screen = (slug: string, name: string) => `/projects/${slug}/${name}.webp`

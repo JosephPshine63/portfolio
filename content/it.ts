@@ -1,5 +1,5 @@
 import type { Dictionary } from './types'
-import { projectLinks, site } from './shared'
+import { projectLinks, screen, site } from './shared'
 
 export const it: Dictionary = {
   meta: {
@@ -36,7 +36,7 @@ export const it: Dictionary = {
     ],
     subclasses: { label: 'Sottoclassi', items: ['Fullstack Developer', 'DevOps', 'Product Engineer'] },
     dialog:
-      'Ciao! Sono Giuseppe.\nCostruisco sistemi in produzione, dall’API Spring Boot all’interfaccia Angular o React.\n3+ anni su assicurazioni, energia, PA e sanità.',
+      'Ciao! Sono Giuseppe.\nCostruisco sistemi in produzione, dall’API Spring Boot all’interfaccia Angular o React, fino al deploy su Kubernetes con CI/CD.\n3+ anni su assicurazioni, energia, PA e sanità.\nNel tempo libero porto online i miei progetti, dal codice al server Linux: li trovi qui sotto!',
     ctaProjects: 'Vedi i progetti',
     ctaCv: 'Scarica il CV',
   },
@@ -45,7 +45,7 @@ export const it: Dictionary = {
     subtitle: 'Statistiche',
     mission: {
       label: 'Missione attuale',
-      text: 'Analyst Software Engineer in Accenture, sulla piattaforma assicurativa di Generali e sul mercato di bilanciamento elettrico di Terna.',
+      text: 'Analyst Software Engineer in Accenture, attualmente sulla piattaforma per il mercato di bilanciamento elettrico di Terna.',
     },
     languages: {
       label: 'Lingue',
@@ -201,6 +201,14 @@ export const it: Dictionary = {
         stack: ['Spring Boot 3', 'Angular 19', 'Keycloak', 'RabbitMQ', 'WebRTC', 'PostgreSQL'],
         status: 'online',
         ...projectLinks.wacchat,
+        screens: [
+          { src: screen('wacchat', 'chat'), caption: 'Chat' },
+          { src: screen('wacchat', 'settings'), caption: 'Impostazioni' },
+          { src: screen('wacchat', 'incoming-call'), caption: 'Chiamata in arrivo' },
+          { src: screen('wacchat', 'video-call'), caption: 'Videochiamata' },
+          { src: screen('wacchat', 'sign-up'), caption: 'Registrazione' },
+          { src: screen('wacchat', 'username'), caption: 'Scelta dello username' },
+        ],
         details: [
           {
             title: 'Cosa ho fatto',
@@ -269,6 +277,12 @@ export const it: Dictionary = {
         stack: ['React', 'Redux', 'Spring Cloud Gateway', 'PostgreSQL', 'Stripe'],
         status: 'online',
         ...projectLinks.gprflow,
+        screens: [
+          { src: screen('gprflow', 'home'), caption: 'Home' },
+          { src: screen('gprflow', 'statistics'), caption: 'Statistiche' },
+          { src: screen('gprflow', 'portfolio'), caption: 'Portfolio' },
+          { src: screen('gprflow', 'activity'), caption: 'Attività' },
+        ],
         details: [
           {
             title: 'Cosa ho fatto',
@@ -328,6 +342,14 @@ export const it: Dictionary = {
         stack: ['Spring Boot 3', 'Next.js', 'PostgreSQL', 'Stripe', 'Docker'],
         status: 'online',
         ...projectLinks.piocart,
+        screens: [
+          { src: screen('piocart', 'home'), caption: 'Home' },
+          { src: screen('piocart', 'catalog'), caption: 'Catalogo' },
+          { src: screen('piocart', 'product'), caption: 'Prodotto' },
+          { src: screen('piocart', 'cart-drawer'), caption: 'Carrello rapido' },
+          { src: screen('piocart', 'cart'), caption: 'Carrello' },
+          { src: screen('piocart', 'order'), caption: 'Dettaglio ordine' },
+        ],
         details: [
           {
             title: 'Cosa ho fatto',
@@ -456,6 +478,9 @@ export const it: Dictionary = {
     // TODO: testi da scrivere con Giuseppe, un set per progetto
     sections: ['Il problema', 'Architettura', 'Scelte tecniche', 'Cosa ho imparato'],
     placeholder: '[Da scrivere]',
+    gallery: 'Schermate',
+    prevScreen: 'Schermata precedente',
+    nextScreen: 'Schermata successiva',
   },
   skills: {
     title: 'Skill',

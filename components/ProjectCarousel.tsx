@@ -6,7 +6,18 @@ type Labels = { list: string; prev: string; next: string; goTo: string }
 
 // Scrolling and snapping are plain CSS, so the cards work without JavaScript.
 // This component only adds the arrows, the counter and the slot dots.
-export function ProjectCarousel({ names, labels, children }: { names: string[]; labels: Labels; children: ReactNode }) {
+// Also used for the screenshots of a case study, with className="carousel--screens".
+export function ProjectCarousel({
+  names,
+  labels,
+  className,
+  children,
+}: {
+  names: string[]
+  labels: Labels
+  className?: string
+  children: ReactNode
+}) {
   const track = useRef<HTMLUListElement>(null)
   const [current, setCurrent] = useState(0)
   const count = names.length
@@ -50,7 +61,7 @@ export function ProjectCarousel({ names, labels, children }: { names: string[]; 
   }
 
   return (
-    <div className="carousel">
+    <div className={className ? `carousel ${className}` : 'carousel'}>
       <div className="carousel__bar">
         <ul className="carousel__dots">
           {names.map((name, i) => (

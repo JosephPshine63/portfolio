@@ -16,9 +16,13 @@ export type Project = {
   details?: DetailGroup[]
   // Case study chapters, in the order of caseStudy.sections; a missing one shows the placeholder.
   story?: StoryChapter[]
+  // The first one is the cover of the card; all of them form the case study carousel.
+  screens?: Screenshot[]
 }
 
 export type StoryChapter = { text?: string; items?: string[] }
+
+export type Screenshot = { src: string; caption: string }
 
 export type Certification = {
   name: string
@@ -102,7 +106,14 @@ export type Dictionary = {
     newGame: { question: string; cta: string }
   }
   projects: { title: string; subtitle: string; items: Project[]; emptySlot: string; moreLabel: string }
-  caseStudy: { eject: string; sections: string[]; placeholder: string }
+  caseStudy: {
+    eject: string
+    sections: string[]
+    placeholder: string
+    gallery: string
+    prevScreen: string
+    nextScreen: string
+  }
   skills: { title: string; subtitle: string; groups: SkillGroup[] }
   certifications: { title: string; subtitle: string; items: Certification[] }
   contact: { title: string; subtitle: string; question: string; text: string; links: Link[]; form: ContactForm }
