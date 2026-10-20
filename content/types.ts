@@ -34,6 +34,9 @@ export type Certification = {
 // Optional title, e.g. the client project the items belong to.
 export type DetailGroup = { title?: string; items: string[] }
 
+// A short paragraph about one part of an experience, e.g. one client project.
+export type SlotChapter = { title?: string; text: string }
+
 export type SaveSlot = {
   org: string
   role?: string
@@ -42,7 +45,7 @@ export type SaveSlot = {
   current?: boolean
   lines: string[]
   tags?: string[]
-  details?: DetailGroup[]
+  details?: SlotChapter[]
 }
 
 export type ContactForm = {

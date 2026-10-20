@@ -78,22 +78,11 @@ export const it: Dictionary = {
         details: [
           {
             title: 'Generali · IIAB',
-            items: [
-              'Partecipato all’analisi e allo sviluppo delle user story sul frontend dei flussi assicurativi e bancari',
-              'Sviluppato componenti della suite PASS in AngularJS e Angular 14',
-              'Sviluppato funzionalità e corretto bug sul backend in Java 17',
-              'Gestito il versionamento dei dati su Oracle e PostgreSQL, e codice e pipeline su GitLab',
-            ],
+            text: 'Sulla piattaforma assicurativa internazionale di Generali ho partecipato all’analisi e allo sviluppo delle user story sul frontend dei flussi assicurativi e bancari. Ho realizzato componenti della suite PASS in AngularJS e Angular 14. Sul backend in Java 17, con un’architettura ad API REST, ho sviluppato funzionalità e corretto bug. Ho gestito il versionamento dei dati su Oracle e PostgreSQL e quello del codice, con le pipeline, su GitLab.',
           },
           {
             title: 'Terna · MSD',
-            items: [
-              'Fatto refactoring e migrato funzionalità esistenti del backend, in un dominio come quello energetico dove servono API veloci e accurate',
-              'Sviluppato microservizi soprattutto in Spring Boot, il backend principale, e anche in Node.js e Python, con procedure SQL su Oracle e integrazione con MongoDB',
-              'Implementato elaborazioni batch asincrone e notifiche in tempo reale via WebSocket',
-              'Creato e migliorato interfacce in React (TypeScript e JavaScript), curando UI e UX',
-              'Gestito il deploy nei vari ambienti con Kubernetes (OpenShift e AWS), con pipeline e pull request su GitLab',
-            ],
+            text: 'Lavoro soprattutto al refactoring e alla migrazione di funzionalità esistenti, perché nel mondo energetico servono API veloci e accurate. Il backend principale è in Spring Boot, dentro un’architettura a microservizi con API REST e servizi anche in Node.js e Python. Scrivo procedure SQL su Oracle, integro MongoDB e mi occupo di elaborazioni batch asincrone e notifiche in tempo reale via WebSocket. Sul frontend creo e miglioro interfacce in React (TypeScript e JavaScript), curando UI e UX. Gestisco anche il deploy nei vari ambienti con Kubernetes su OpenShift e AWS, con pipeline e pull request su GitLab.',
           },
         ],
       },
@@ -111,29 +100,19 @@ export const it: Dictionary = {
         details: [
           {
             title: 'GDSI · Forze Armate',
-            items: [
-              'Sviluppato servizi Spring Boot in un team cross-funzionale, introducendo un nuovo ruolo Keycloak e aggiornando la configurazione Spring Security',
-              "Ottimizzato componenti Angular 14 e integrato Elasticsearch per l'indicizzazione e la ricerca avanzata",
-            ],
+            text: 'In un team cross-funzionale ho sviluppato servizi REST in Spring Boot per la gestione dei dati sanitari delle infermerie, introducendo un nuovo ruolo Keycloak e aggiornando la configurazione di Spring Security. Sul frontend ho ottimizzato componenti Angular 14 e ho integrato Elasticsearch per l’indicizzazione e la ricerca avanzata.',
           },
           {
             title: 'Whistleblowing · Ministero della Difesa',
-            items: [
-              'Sviluppato su una piattaforma di segnalazioni anonime basata su GlobaLeaks (open source), con backend Python (Twisted, SQLAlchemy), frontend Angular 18 e deploy su AWS',
-            ],
+            text: 'Ho lavorato a una piattaforma di segnalazioni anonime basata sul software open source GlobaLeaks, con API REST in Python (Twisted, SQLAlchemy), frontend in Angular 18 e deploy su AWS.',
           },
           {
             title: 'Comune di Roma · Lucilla e Casa Digitale del Cittadino',
-            items: [
-              'Ristrutturato il frontend Angular di Lucilla (delibere di giunta), rendendolo più manutenibile e leggibile, e scritto la documentazione tecnica e funzionale per il team',
-              "Gestito log applicativi e monitoraggio della Casa Digitale del Cittadino sull'orchestratore WSO2, con integrazione di Kafka",
-            ],
+            text: 'Ho ristrutturato il frontend Angular di Lucilla, l’applicazione per le delibere di giunta, rendendolo più manutenibile e leggibile, e ho scritto la documentazione tecnica e funzionale per il team. Sulla Casa Digitale del Cittadino, un’architettura ad API REST, ho gestito i log applicativi e il monitoraggio sull’orchestratore WSO2, con l’integrazione di Kafka.',
           },
           {
             title: 'Su più progetti',
-            items: [
-              'Gestito le migrazioni di schema su Oracle con Liquibase e Spring Batch in un ambiente multi-team, mantenendo coerenti gli ambienti',
-            ],
+            text: 'In un ambiente con più team ho gestito le migrazioni di schema su Oracle con Liquibase e Spring Batch, mantenendo coerenti gli ambienti.',
           },
         ],
       },
@@ -147,11 +126,7 @@ export const it: Dictionary = {
         details: [
           {
             title: 'Stellantis · asciugatura degli sportelli',
-            items: [
-              'Realizzato e programmato PLC e HMI con la suite Siemens TIA Portal per il controllo della temperatura nei reparti di asciugatura degli sportelli',
-              'Implementato il controllo automatico della fiamma che mantiene la temperatura di asciugatura',
-              "Collegato i log dell'impianto a un database MS Access e le impostazioni a MariaDB, con logica in VBScript e SQL",
-            ],
+            text: 'Durante lo stage ho realizzato e programmato PLC e HMI con la suite Siemens TIA Portal per il controllo della temperatura nei reparti di asciugatura degli sportelli Stellantis. Mi sono occupato del controllo automatico della fiamma, che mantiene la temperatura di asciugatura. Ho collegato i log dell’impianto a un database MS Access e le impostazioni a MariaDB, con logica in VBScript e SQL.',
           },
         ],
       },
@@ -163,12 +138,7 @@ export const it: Dictionary = {
         lines: ['Academy intensiva di 248 ore, con attestato di qualifica Software Engineer'],
         details: [
           {
-            items: [
-              'Backend: Java SE/EE, Spring (Core, MVC, Boot, Data JPA, Cloud), Maven, Gradle',
-              'Frontend: HTML5, CSS, Bootstrap, JavaScript, React, Angular',
-              'Database MySQL e MongoDB, architetture REST monolitiche e a microservizi (API Gateway, health check)',
-              'Design pattern (Facade, Factory, Strategy, Singleton, Builder) e architetturali (DTO, DAO, MVC, IoC), Docker e Git',
-            ],
+            text: 'Durante l’academy ho studiato il backend con Java SE/EE e Spring (Core, MVC, Boot, Data JPA, Cloud), usando Maven e Gradle, e il frontend con HTML5, CSS, Bootstrap, JavaScript, React e Angular. Ho lavorato con database MySQL e MongoDB e con architetture REST sia monolitiche sia a microservizi (API Gateway, health check). Ho approfondito i design pattern (Facade, Factory, Strategy, Singleton, Builder) e quelli architetturali (DTO, DAO, MVC, IoC), insieme a Docker e Git.',
           },
         ],
       },
@@ -180,10 +150,7 @@ export const it: Dictionary = {
         lines: ['Voto finale 90/100'],
         details: [
           {
-            items: [
-              'Programmazione front-end e back-end, networking, crittografia, progettazione di database e paradigma OOP',
-              'Linguaggi: Java, C, PHP, SQL, HTML, CSS, JavaScript',
-            ],
+            text: 'Ho studiato programmazione front-end e back-end, networking, crittografia, progettazione di database e programmazione a oggetti, usando Java, C, PHP, SQL, HTML, CSS e JavaScript.',
           },
         ],
       },
