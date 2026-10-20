@@ -183,8 +183,7 @@ export const it: Dictionary = {
         ],
       },
     ],
-    // TODO: testo da scrivere con Giuseppe
-    newGame: { label: 'Nuova partita', text: '[Da scrivere]' },
+    newGame: { question: 'Vuoi iniziare una nuova partita?', cta: 'Scrivimi' },
   },
   projects: {
     title: 'Progetti',

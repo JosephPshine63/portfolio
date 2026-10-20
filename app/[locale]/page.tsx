@@ -178,8 +178,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </li>
             ))}
             <li className="save-slot save-slot--empty">
-              <p className="pixel">{t.journey.newGame.label.toUpperCase()}</p>
-              <p className="muted">{t.journey.newGame.text}</p>
+              <p className="pixel">{t.journey.newGame.question}</p>
+              <a className="button button--primary" href="#salva">
+                ▶ {t.journey.newGame.cta.toUpperCase()}
+              </a>
             </li>
           </ol>
         </section>

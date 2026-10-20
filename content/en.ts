@@ -183,8 +183,7 @@ export const en: Dictionary = {
         ],
       },
     ],
-    // TODO: copy to be written with Giuseppe
-    newGame: { label: 'New game', text: '[To be written]' },
+    newGame: { question: 'Want to start a new game?', cta: 'Write to me' },
   },
   projects: {
     title: 'Projects',
@@ -454,7 +453,6 @@ export const en: Dictionary = {
   },
   caseStudy: {
     eject: 'Eject cartridge',
-    // TODO: copy to be written with Giuseppe, one set per project
     sections: ['The problem', 'Architecture', 'Technical choices', 'What I learned'],
     placeholder: '[To be written]',
   },

@@ -99,7 +99,7 @@ export type Dictionary = {
     slotLabel: string
     detailsLabel: string
     slots: SaveSlot[]
-    newGame: { label: string; text: string }
+    newGame: { question: string; cta: string }
   }
   projects: { title: string; subtitle: string; items: Project[]; emptySlot: string; moreLabel: string }
   caseStudy: { eject: string; sections: string[]; placeholder: string }
