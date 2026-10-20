@@ -16,6 +16,6 @@ export const site = {
 export const projectLinks = {
   wacchat: { demo: 'https://wacchat.win', code: 'https://github.com/JosephPshine63/wacchat' },
   gprflow: { demo: 'https://gprflow.trade', code: 'https://github.com/JosephPshine63/GprFlow' },
-  piocart: { code: 'https://github.com/JosephPshine63/PioCart' },
+  piocart: { demo: 'https://pio-cart-psi.vercel.app', code: 'https://github.com/JosephPshine63/PioCart' },
   booktribe: { code: 'https://github.com/JosephPshine63/BookTribe' },
 } as const

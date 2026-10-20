@@ -322,16 +322,63 @@ export const it: Dictionary = {
       {
         slug: 'piocart',
         name: 'PioCart',
-        tagline: 'REST API e-commerce',
-        description: 'Prodotti, categorie, carrello, ordini e utenti, con modello JPA e ambiente dockerizzato.',
+        tagline: 'E-commerce full-stack',
+        description:
+          'Backend Spring Boot e storefront Next.js: catalogo con ricerca e filtri, carrello, checkout Stripe, storico ordini e area di amministrazione, con login JWT a ruoli.',
         role: 'Progetto personale.',
-        stack: ['Java 17', 'Spring Boot 3', 'PostgreSQL', 'Docker Compose'],
-        status: 'repo',
+        stack: ['Spring Boot 3', 'Next.js', 'PostgreSQL', 'Stripe', 'Docker'],
+        status: 'online',
         ...projectLinks.piocart,
         details: [
           {
+            title: 'Cosa ho fatto',
             items: [
-              'Modello JPA di un e-commerce (prodotti, categorie, carrello, ordini, utenti, immagini), con DTO tramite ModelMapper e PostgreSQL in Docker',
+              'Negozio completo: backend Spring Boot con PostgreSQL e storefront Next.js con Server Actions, catalogo di 45 prodotti in 6 categorie, pagamento con Stripe Checkout e area admin per catalogo e ordini',
+            ],
+          },
+          {
+            title: 'Sfida tecnica',
+            items: [
+              'Un pagamento di cui fidarsi: l’ordine si conferma solo dopo aver verificato con Stripe l’importo pagato, e annullarlo prima della spedizione rimborsa il pagamento e rimette gli articoli in magazzino',
+            ],
+          },
+          {
+            title: 'Scelta di cui vado fiero',
+            items: [
+              'Va online solo codice testato: i deploy automatici di Vercel sono disattivati e la pipeline rilascia prima il backend, poi il frontend, poi controlla la SEO del sito in produzione',
+            ],
+          },
+        ],
+        story: [
+          {
+            text: 'Partito come REST API per un e-commerce, volevo portarlo fino a un negozio completo: catalogo, carrello, pagamento, storico ordini e un’area di amministrazione, con un deploy vero. La demo ha un catalogo di prova di 45 prodotti e i pagamenti Stripe sono in modalità test, quindi nessun denaro reale si muove.',
+          },
+          {
+            text: 'Backend Spring Boot con PostgreSQL e storefront Next.js con React 19, Tailwind e shadcn/ui.',
+            items: [
+              'Il browser non chiama mai il backend: tutte le richieste passano dal server Next.js (Server Components, Server Actions e route handler)',
+              'Autenticazione JWT stateless con ruoli USER e ADMIN, token in un cookie httpOnly',
+              'Backend in Docker sul mio server Ubuntu, pubblicato in HTTPS con Tailscale Funnel senza aprire porte; storefront su Vercel, con le funzioni a Francoforte vicino al backend',
+              'CI/CD con GitHub Actions: test con Testcontainers, lint e typecheck, poi deploy del backend via Tailscale e SSH con ritorno al commit precedente se non parte, solo dopo deploy del frontend e infine un controllo SEO sul sito in produzione',
+            ],
+          },
+          {
+            items: [
+              'Pagamento con Stripe Checkout: l’ordine nasce in attesa e viene confermato solo dopo aver verificato con Stripe che l’importo pagato sia quello giusto; solo allora scala le giacenze e svuota il carrello',
+              'Annullare un ordine non ancora spedito rimborsa il pagamento e rimette gli articoli in magazzino',
+              'Carrello con aggiornamenti ottimistici che tornano indietro se il backend rifiuta la modifica, per esempio per giacenza insufficiente',
+              'Carrelli e ordini ricavati dal token: gli ordini di altri utenti rispondono 404',
+              'Regole di dominio nel backend: non si elimina un prodotto già ordinato né una categoria con prodotti, e le immagini caricate sono controllate per tipo e dimensione',
+              'Catalogo con filtri, ricerca, ordinamento e paginazione nell’URL',
+              'SEO curata: description e canonical per ogni pagina, dati strutturati per prodotti e categorie, immagini di anteprima generate, sitemap inviata a Google Search Console e uno script che in CI controlla title, description, canonical e JSON-LD',
+            ],
+          },
+          {
+            items: [
+              'Le impostazioni predefinite di JPA vanno controllate: un cascade su una relazione ManyToOne cancellava le entità padre, la tabella user andava rinominata perché è una parola riservata di PostgreSQL e le immagini salvate come large object si leggono solo dentro una transazione',
+              'Un ordine creato non è un ordine pagato: lo storico mostra solo quelli con il pagamento verificato da Stripe, così i checkout abbandonati non compaiono',
+              'Far passare tutte le chiamate dal server Next.js tiene il backend e il token fuori dal browser, ma sposta lì la gestione di sessione, errori e cache',
+              'I limiti della piattaforma entrano nel design: Vercel accetta richieste fino a 4,5 MB, quindi le immagini dei prodotti si caricano una alla volta',
             ],
           },
         ],
