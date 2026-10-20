@@ -333,6 +333,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     {l.icon && <PixelIcon name={l.icon} color={`var(--${LINK_COLORS[l.icon] ?? 'blue'})`} />}
                     {l.label.toUpperCase()}
                     {l.href.startsWith('mailto:') && <span className="menu__detail">{site.email}</span>}
+                    {l.href === site.whatsapp && <span className="menu__detail">{site.phone}</span>}
                   </a>
                 </li>
               ))}

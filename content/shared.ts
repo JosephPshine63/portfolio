@@ -4,6 +4,7 @@ export const site = {
   url: 'https://gprdev.com',
   name: 'Giuseppe Pio Ruocco',
   email: 'dev.pioruocco@gmail.com',
+  phone: '+39 346 752 8654',
   whatsapp: 'https://wa.me/393467528654',
   linkedin: 'https://www.linkedin.com/in/giuseppe-pio-ruocco-7b4367267/',
   github: 'https://github.com/JosephPshine63',
