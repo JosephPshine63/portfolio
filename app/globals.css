@@ -765,6 +765,17 @@ ul.plain {
   font-size: 24px;
 }
 
+.case-study__list {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.case-study__list li::marker {
+  color: var(--red);
+}
+
 /* Cartridge insert transition shown before opening a case study. */
 .cartridge-overlay {
   position: fixed;

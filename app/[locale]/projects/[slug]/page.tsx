@@ -84,12 +84,28 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        {t.caseStudy.sections.map((title) => (
-          <section key={title} className="window">
-            <h2 className="case-study__heading">{title}</h2>
-            <p className="muted">{t.caseStudy.placeholder}</p>
-          </section>
-        ))}
+        {t.caseStudy.sections.map((title, i) => {
+          const chapter = project.story?.[i]
+          return (
+            <section key={title} className="window">
+              <h2 className="case-study__heading">{title}</h2>
+              {chapter ? (
+                <>
+                  {chapter.text && <p>{chapter.text}</p>}
+                  {chapter.items && (
+                    <ul className="case-study__list">
+                      {chapter.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <p className="muted">{t.caseStudy.placeholder}</p>
+              )}
+            </section>
+          )
+        })}
       </main>
 
       <footer className="site-footer">{t.footer}</footer>

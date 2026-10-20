@@ -228,7 +228,7 @@ export const en: Dictionary = {
         name: 'GprFlow',
         tagline: 'Crypto trading platform',
         description:
-          'Live market data, a portfolio with profit and loss, Stripe payments and a Gemini chatbot. JWT in an HttpOnly cookie, OTP 2FA, a gateway with rate limiting.',
+          'Live market data, a portfolio with profit and loss, statistics with charts, Stripe payments and a Gemini chatbot. JWT in an HttpOnly cookie and a gateway with rate limiting.',
         role: 'Personal project, from architecture to deploy.',
         stack: ['React', 'Redux', 'Spring Cloud Gateway', 'PostgreSQL', 'Stripe'],
         status: 'online',
@@ -237,7 +237,7 @@ export const en: Dictionary = {
           {
             title: 'What I built',
             items: [
-              'Crypto trading platform with React and Redux: live CoinGecko market data, portfolio and orders, Stripe deposits and a Gemini chatbot',
+              'Crypto trading platform with React and Redux: live CoinGecko market data, portfolio and orders, a statistics page with portfolio, order and wallet charts, Stripe deposits and a Gemini chatbot',
             ],
           },
           {
@@ -250,6 +250,27 @@ export const en: Dictionary = {
             title: "A choice I'm proud of",
             items: [
               'Security at the gateway: the JWT is validated once and services receive the verified identity, with per-IP rate limiting and Cloudflare Turnstile on login',
+            ],
+          },
+        ],
+        story: [
+          {
+            text: 'I wanted a personal project that dealt with what a real app has to handle: money, authentication, live external data and a real deployment. Stripe payments in the demo run in test mode, so no real money moves.',
+          },
+          {
+            text: 'It started as a Spring Boot monolith and is now split into services behind a Spring Cloud Gateway, with a React and Redux frontend.',
+            items: [
+              'Services: coin, chatbot, ledger, auth and user, plus what is left of the monolith',
+              'A single PostgreSQL instance, with a separate schema per service',
+              'Hosted on my own Ubuntu server and exposed through a Cloudflare Tunnel, with no ports open on the router',
+              'Automatic deploys with GitHub Actions: frontend and backend checks first, then release over Tailscale and SSH',
+            ],
+          },
+          {
+            items: [
+              'Phased migration: integration tests with Testcontainers first as a safety net, then one domain at a time (Coin and Chatbot, then Ledger, finally Auth and User)',
+              'Security at the gateway: JWT in an HttpOnly cookie validated once, identity passed to services in headers, per-IP rate limiting, a 1 MB request cap and Cloudflare Turnstile on sign-in, sign-up and password reset',
+              'Getting money right: closed access to other users’ data (IDOR), negative or zero amounts, OTP code reuse and wallet precision errors; the buy price is a weighted average when you buy the same asset again',
             ],
           },
         ],

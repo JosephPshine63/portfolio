@@ -14,7 +14,11 @@ export type Project = {
   demo?: string
   code?: string
   details?: DetailGroup[]
+  // Case study chapters, in the order of caseStudy.sections; a missing one shows the placeholder.
+  story?: StoryChapter[]
 }
+
+export type StoryChapter = { text?: string; items?: string[] }
 
 export type Certification = {
   name: string
