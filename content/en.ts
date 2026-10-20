@@ -389,13 +389,63 @@ export const en: Dictionary = {
         tagline: 'Spring Cloud microservices',
         description: 'Config server, discovery, gateway, feedback and notification services, with an Angular frontend and Keycloak.',
         role: 'Personal project.',
-        stack: ['Spring Cloud', 'Angular', 'Keycloak'],
+        stack: ['Spring Cloud', 'Angular', 'Keycloak', 'OpenFeign', 'Resilience4j', 'PostgreSQL'],
         status: 'repo',
         ...projectLinks.booktribe,
         details: [
           {
+            title: 'What I built',
             items: [
               'Book-lending social network: borrowing, owner-approved returns and reviews, with Keycloak authentication and an OpenAPI-generated Angular client',
+            ],
+          },
+          {
+            title: 'Technical challenge',
+            items: [
+              'Splitting a monolith into Spring Cloud microservices in three phases: the infrastructure first (Config Server, Eureka, Gateway), then notifications, finally feedback with its own database',
+            ],
+          },
+          {
+            title: "A choice I'm proud of",
+            items: [
+              'Services call each other with OpenFeign behind Resilience4j circuit breakers: if feedback is down, the catalog stays usable instead of breaking',
+            ],
+          },
+        ],
+        story: [
+          {
+            text: 'A book-lending social network that started as a monolithic Spring Boot and Angular application. I used it to learn how to split a system into microservices with Spring Cloud, one domain at a time, without rewriting it from scratch.',
+            items: [
+              'A paginated catalog of the books shared by the community',
+              'Publishing your own books with a cover, shareable or archived',
+              'Borrowing and returning, with the return approved by the owner',
+              'Ratings and reviews on the books you borrowed',
+            ],
+          },
+          {
+            text: 'Spring Boot 3 microservices on Spring Cloud: every service reads its configuration from the Config Server and registers with Eureka, and the Angular frontend talks only to the gateway.',
+            items: [
+              'Spring Cloud Gateway as the single entry point, with CORS configured there instead of in each service',
+              'Services: books and loans, feedback with its own database, email notifications with Thymeleaf templates',
+              'Authentication delegated to Keycloak: services validate the JWT as resource servers, the frontend uses keycloak-js with PKCE',
+              'An Angular client generated with ng-openapi-gen from the merged specs of the two services',
+              'Deployment prepared: multi-stage Dockerfiles, a production Docker Compose with Postgres and Keycloak, the frontend meant for Vercel and the backend for my server via Tailscale Funnel',
+            ],
+          },
+          {
+            items: [
+              'A three-phase migration, each step checked against a real stack: throwaway Postgres, Keycloak and MailDev, and real JWTs',
+              'Feedback stores only the book id instead of a JPA foreign key, so the two domains have separate databases',
+              'Service-to-service calls with OpenFeign and Resilience4j circuit breakers with fallbacks: if feedback is down the book list shows a rating of 0, if books are down feedback answers 503 with a clear message',
+              'Configuration from environment variables with local defaults, plus an optional seeder with sample books, loans and reviews',
+            ],
+          },
+          {
+            items: [
+              'Extracting a service surfaces bugs the monolith was hiding: an email template looked up by the wrong name in code that was never reached, and an ownership check that compared a string with an integer',
+              'Identity does not travel between microservices on its own: the JWT was not forwarded on Feign calls until I added an interceptor',
+              'Resilience has to be tested in the failure case: with a misnamed property the fallbacks never fired, and I only noticed by shutting a service down',
+              'Microservices have a concrete cost: turning a join into a network call forces you to decide what to show when the other service does not answer, and five JVMs with Keycloak and Postgres take about 3 GB of RAM',
             ],
           },
         ],

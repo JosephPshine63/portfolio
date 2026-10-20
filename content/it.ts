@@ -389,13 +389,63 @@ export const it: Dictionary = {
         tagline: 'Microservizi Spring Cloud',
         description: 'Config server, discovery, gateway e servizi di feedback e notifiche, con frontend Angular e Keycloak.',
         role: 'Progetto personale.',
-        stack: ['Spring Cloud', 'Angular', 'Keycloak'],
+        stack: ['Spring Cloud', 'Angular', 'Keycloak', 'OpenFeign', 'Resilience4j', 'PostgreSQL'],
         status: 'repo',
         ...projectLinks.booktribe,
         details: [
           {
+            title: 'Cosa ho fatto',
             items: [
               'Social per il prestito di libri: prestito, restituzione approvata dal proprietario e recensioni, con autenticazione Keycloak e client Angular generato da OpenAPI',
+            ],
+          },
+          {
+            title: 'Sfida tecnica',
+            items: [
+              'Scomporre un monolite in microservizi Spring Cloud in tre fasi: prima l’infrastruttura (Config Server, Eureka, Gateway), poi le notifiche, infine i feedback con un database proprio',
+            ],
+          },
+          {
+            title: 'Scelta di cui vado fiero',
+            items: [
+              'I servizi si chiamano con OpenFeign dietro circuit breaker Resilience4j: se i feedback non rispondono, il catalogo resta usabile invece di rompersi',
+            ],
+          },
+        ],
+        story: [
+          {
+            text: 'Un social network per il prestito di libri, nato come applicazione monolitica Spring Boot e Angular. L’ho usato per imparare a scomporre un sistema in microservizi con Spring Cloud, un dominio alla volta, senza riscriverlo da capo.',
+            items: [
+              'Catalogo paginato dei libri condivisi dalla community',
+              'Pubblicazione dei propri libri con copertina, da rendere condivisibili o archiviare',
+              'Prestito e restituzione, con la restituzione approvata dal proprietario',
+              'Voto e recensione sui libri presi in prestito',
+            ],
+          },
+          {
+            text: 'Microservizi Spring Boot 3 su Spring Cloud: ogni servizio legge la configurazione dal Config Server e si registra su Eureka, e il frontend Angular parla solo con il gateway.',
+            items: [
+              'Spring Cloud Gateway come unico punto d’ingresso, con la configurazione CORS centralizzata lì invece che nei singoli servizi',
+              'Servizi: libri e prestiti, feedback con un database proprio, notifiche email con template Thymeleaf',
+              'Autenticazione delegata a Keycloak: i servizi validano il JWT come resource server, il frontend usa keycloak-js con PKCE',
+              'Client Angular generato con ng-openapi-gen dalle specifiche dei due servizi unite',
+              'Deploy preparato: Dockerfile multi-stage, un Docker Compose di produzione con Postgres e Keycloak, frontend pensato per Vercel e backend per il mio server via Tailscale Funnel',
+            ],
+          },
+          {
+            items: [
+              'Migrazione in tre fasi, verificando ogni passo con uno stack reale: Postgres, Keycloak e MailDev usa-e-getta e JWT veri',
+              'Il feedback conserva solo l’id del libro invece di una chiave esterna JPA, così i due domini hanno database separati',
+              'Chiamate tra servizi con OpenFeign e circuit breaker Resilience4j con fallback: se i feedback sono giù la lista dei libri mostra voto 0, se i libri sono giù il feedback risponde 503 con un messaggio chiaro',
+              'Configurazione da variabili d’ambiente con default locali, e un seeder opzionale con libri, prestiti e recensioni di esempio',
+            ],
+          },
+          {
+            items: [
+              'Estrarre un servizio fa emergere bug che il monolite nascondeva: un template email cercato con il nome sbagliato in codice mai raggiunto e un controllo sul proprietario che confrontava una stringa con un intero',
+              'Tra microservizi l’identità non passa da sola: il JWT non veniva inoltrato nelle chiamate Feign finché non ho aggiunto un interceptor',
+              'La resilienza va provata nel caso di guasto: con il nome sbagliato di una property i fallback non scattavano mai, e me ne sono accorto solo spegnendo un servizio',
+              'I microservizi hanno un costo concreto: trasformare una join in una chiamata di rete obbliga a decidere cosa mostrare quando l’altro servizio non risponde, e cinque JVM con Keycloak e Postgres occupano circa 3 GB di RAM',
             ],
           },
         ],
