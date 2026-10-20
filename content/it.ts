@@ -71,7 +71,7 @@ export const it: Dictionary = {
         period: '11/2025 – oggi',
         current: true,
         lines: [
-          'Generali · piattaforma assicurativa IIAB in produzione nell’UE, team di 200+',
+          'Generali · piattaforma assicurativa internazionale IIAB',
           'Terna · gestione del mercato di bilanciamento elettrico nazionale',
         ],
         tags: ['Angular', 'React', 'Java', 'Node.js', 'Kafka', 'Kubernetes'],
@@ -79,17 +79,20 @@ export const it: Dictionary = {
           {
             title: 'Generali · IIAB',
             items: [
-              'Guidato lo sviluppo di user story sui flussi assicurativi e bancari, aggiornando i componenti Angular 16+ e i dati su Oracle e PostgreSQL',
-              'Sviluppato endpoint Java Spring Boot per la logica di business assicurativa, con la gestione degli eventi su Kafka',
-              'Rilasciato in ~8 sprint bisettimanali con GitFlow, code review sistematiche, deploy su AWS e demo al cliente',
+              'Partecipato all’analisi e allo sviluppo delle user story sul frontend dei flussi assicurativi e bancari',
+              'Sviluppato componenti della suite PASS in AngularJS e Angular 14',
+              'Sviluppato funzionalità e corretto bug sul backend in Java 17',
+              'Gestito il versionamento dei dati su Oracle e PostgreSQL, e codice e pipeline su GitLab',
             ],
           },
           {
             title: 'Terna · MSD',
             items: [
-              'Realizzato sia il frontend (React, TypeScript) sia i servizi backend (Java, Node.js) di una piattaforma a microservizi',
-              'Integrato Oracle e MongoDB, con elaborazioni batch asincrone e notifiche in tempo reale via WebSocket',
-              'Gestito il deploy su Kubernetes (OpenShift e AWS) e le pipeline CI/CD su GitLab',
+              'Fatto refactoring e migrato funzionalità esistenti del backend, in un dominio come quello energetico dove servono API veloci e accurate',
+              'Sviluppato microservizi soprattutto in Spring Boot, il backend principale, e anche in Node.js e Python, con procedure SQL su Oracle e integrazione con MongoDB',
+              'Implementato elaborazioni batch asincrone e notifiche in tempo reale via WebSocket',
+              'Creato e migliorato interfacce in React (TypeScript e JavaScript), curando UI e UX',
+              'Gestito il deploy nei vari ambienti con Kubernetes (OpenShift e AWS), con pipeline e pull request su GitLab',
             ],
           },
         ],
@@ -136,16 +139,18 @@ export const it: Dictionary = {
       },
       {
         org: 'IndSoftware',
-        role: 'HMI Developer',
+        role: 'PLC/HMI Developer',
         place: 'Angri (SA)',
         period: '11/2023 – 12/2023',
-        lines: ['Contratto a progetto · automazione industriale'],
-        tags: ['Siemens TIA Portal', 'VBScript', 'SQL'],
+        lines: ['Stage · cliente Stellantis · controllo della temperatura nei reparti di asciugatura'],
+        tags: ['Siemens TIA Portal', 'C', 'VBScript', 'MS Access', 'MariaDB'],
         details: [
           {
+            title: 'Stellantis · asciugatura degli sportelli',
             items: [
-              'Sviluppato applicazioni SCADA/HMI per il controllo di PLC industriali con Siemens TIA Portal e MS Access',
-              "Implementato la logica di business in VBScript e SQL per l'interazione con database Oracle, a supporto dei processi di produzione",
+              'Realizzato e programmato PLC e HMI con la suite Siemens TIA Portal per il controllo della temperatura nei reparti di asciugatura degli sportelli',
+              'Implementato il controllo automatico della fiamma che mantiene la temperatura di asciugatura',
+              "Collegato i log dell'impianto a un database MS Access e le impostazioni a MariaDB, con logica in VBScript e SQL",
             ],
           },
         ],

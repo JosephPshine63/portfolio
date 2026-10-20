@@ -71,7 +71,7 @@ export const en: Dictionary = {
         period: '11/2025 – now',
         current: true,
         lines: [
-          'Generali · IIAB insurance platform in production across the EU, 200+ person team',
+          'Generali · IIAB international insurance platform',
           'Terna · management of Italy’s national electricity balancing market',
         ],
         tags: ['Angular', 'React', 'Java', 'Node.js', 'Kafka', 'Kubernetes'],
@@ -79,17 +79,20 @@ export const en: Dictionary = {
           {
             title: 'Generali · IIAB',
             items: [
-              'Led the development of user stories for insurance and banking workflows, updating Angular 16+ components and data on Oracle and PostgreSQL',
-              'Built Java Spring Boot endpoints for the core insurance business logic, with event handling on Kafka',
-              'Shipped across ~8 two-week sprints with GitFlow, systematic code reviews, AWS deployments and client demos',
+              'Took part in the analysis and development of frontend user stories for insurance and banking workflows',
+              'Built components of the PASS suite in AngularJS and Angular 14',
+              'Developed features and fixed bugs on the Java 17 backend',
+              'Managed data versioning on Oracle and PostgreSQL, plus code and pipelines on GitLab',
             ],
           },
           {
             title: 'Terna · MSD',
             items: [
-              'Built both the frontend (React, TypeScript) and the backend services (Java, Node.js) of a microservices platform',
-              'Integrated Oracle and MongoDB, with asynchronous batch processing and real-time WebSocket notifications',
-              'Managed Kubernetes deployments (OpenShift and AWS) and CI/CD pipelines on GitLab',
+              'Refactored and migrated existing backend features, in an energy domain where APIs must be fast and accurate',
+              'Developed microservices mainly in Spring Boot, the main backend, and also in Node.js and Python, with SQL procedures on Oracle and MongoDB integration',
+              'Implemented asynchronous batch processing and real-time WebSocket notifications',
+              'Built and improved React interfaces (TypeScript and JavaScript), focusing on UI and UX',
+              'Managed deployments across environments with Kubernetes (OpenShift and AWS), with pipelines and pull requests on GitLab',
             ],
           },
         ],
@@ -136,16 +139,18 @@ export const en: Dictionary = {
       },
       {
         org: 'IndSoftware',
-        role: 'HMI Developer',
+        role: 'PLC/HMI Developer',
         place: 'Angri (SA)',
         period: '11/2023 – 12/2023',
-        lines: ['Project contract · industrial automation'],
-        tags: ['Siemens TIA Portal', 'VBScript', 'SQL'],
+        lines: ['Internship · client: Stellantis · temperature control in the drying departments'],
+        tags: ['Siemens TIA Portal', 'C', 'VBScript', 'MS Access', 'MariaDB'],
         details: [
           {
+            title: 'Stellantis · car door drying',
             items: [
-              'Built SCADA/HMI applications for industrial PLC control with Siemens TIA Portal and MS Access',
-              'Implemented the business logic in VBScript and SQL for Oracle database access, supporting production processes',
+              'Built and programmed PLCs and HMIs with the Siemens TIA Portal suite to control the temperature in the car door drying departments',
+              'Implemented the automatic flame control that keeps the drying temperature on target',
+              'Connected the plant logs to an MS Access database and the settings to MariaDB, with logic in VBScript and SQL',
             ],
           },
         ],
