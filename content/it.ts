@@ -222,6 +222,43 @@ export const it: Dictionary = {
             ],
           },
         ],
+        story: [
+          {
+            text: 'Volevo costruire da zero una chat in tempo reale completa, con un’architettura enterprise vera invece di un’app monolitica. È il mio unico progetto usato davvero da altre persone: l’hanno testata amici e parenti.',
+            items: [
+              'Chat 1:1 e di gruppo, con risposte, inoltro, reazioni e note vocali',
+              'Chiamate audio e video WebRTC, anche di gruppo',
+              'Notifiche desktop e Web Push, con l’app installabile come PWA',
+            ],
+          },
+          {
+            text: 'Uno Spring Cloud Gateway reattivo (WebFlux) è l’unico punto d’ingresso per il frontend Angular 19.',
+            items: [
+              'Servizi: backend (chat, messaggi, utenti), file-service con i media su Cloudflare R2, notification-service per il tempo reale e call-service per la segnalazione delle chiamate',
+              'Arno, un chatbot Gemini che accoglie ogni nuovo utente in una chat di benvenuto',
+              'Autenticazione delegata a Keycloak, con tema personalizzato e una libreria di sicurezza condivisa tra i servizi',
+              'RabbitMQ come broker STOMP invece di un broker in memoria, così lo stato delle sottoscrizioni è condiviso, e come bus di eventi',
+              'Observability completa: tracce su Tempo, metriche su Prometheus, log su Loki e dashboard Grafana',
+            ],
+          },
+          {
+            items: [
+              'Estrazione progressiva dal backend: prima i file, poi le notifiche in tempo reale, poi le chiamate, ognuno con una responsabilità sola',
+              'Chiamate WebRTC 1:1 e di gruppo in topologia mesh fino a 8 persone, con la segnalazione sulla connessione STOMP già aperta',
+              'Client Angular generato dalla specifica OpenAPI, così frontend e backend non vanno fuori sincronia',
+              'Sicurezza rivista dopo un audit: upload validati con i magic bytes, credenziali RabbitMQ diverse per ogni consumer, protezione brute-force su Keycloak, porte di admin e database solo in locale, al massimo 3 sessioni attive per utente',
+              'CI/CD: test a ogni push e deploy in produzione solo se sono verdi, ridistribuendo solo il servizio toccato dal commit',
+            ],
+          },
+          {
+            items: [
+              'Dividere un backend in servizi sposta i problemi sui confini: quando ho estratto le notifiche, la consegna dei messaggi in tempo reale si è rotta finché non ho ricollegato il broker RabbitMQ',
+              'WebRTC è semplice in rete locale e difficile su Internet: segnalazione, candidati ICE e flussi audio da gestire a mano, e senza un server TURN alcune reti non si collegano',
+              'Con un identity provider esterno serve un identificativo stabile: sincronizzare gli utenti per email invece che per il sub di Keycloak creava duplicati e conflitti',
+              'Tracce, metriche e log centralizzati mi hanno fatto trovare in minuti errori che, sparsi su sei container, avrei cercato per ore',
+            ],
+          },
+        ],
       },
       {
         slug: 'gprflow',
