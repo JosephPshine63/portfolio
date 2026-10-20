@@ -273,6 +273,13 @@ export const it: Dictionary = {
               'Correttezza sui soldi: chiusi accessi ai dati di altri utenti (IDOR), importi negativi o nulli, riuso dei codici OTP ed errori di precisione nel wallet; il prezzo di acquisto è una media ponderata quando ricompri lo stesso asset',
             ],
           },
+          {
+            items: [
+              'Come funzionano e come si usano le pipeline di CI/CD, dai controlli automatici al rilascio in produzione',
+              'Come si fa il deploy su un server Linux, compresa l’esposizione dell’app con cloudflared',
+              'Come comunicano tra loro i container di uno stack Docker Compose',
+            ],
+          },
         ],
       },
       {

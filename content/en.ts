@@ -273,6 +273,13 @@ export const en: Dictionary = {
               'Getting money right: closed access to other users’ data (IDOR), negative or zero amounts, OTP code reuse and wallet precision errors; the buy price is a weighted average when you buy the same asset again',
             ],
           },
+          {
+            items: [
+              'How CI/CD pipelines work and how to use them, from automated checks to the production release',
+              'How to deploy to a Linux server, including exposing the app with cloudflared',
+              'How the containers of a Docker Compose stack talk to each other',
+            ],
+          },
         ],
       },
       {
