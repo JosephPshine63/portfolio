@@ -1,7 +1,13 @@
 // Shape of every locale dictionary. Adding a field here makes TypeScript flag
 // each locale that is missing it, so IT and EN can never drift apart.
 
-export type Link = { label: string; href: string }
+export type Link = { label: string; href: string; icon?: IconName }
+
+// Pixel icons drawn in components/PixelIcons.tsx.
+export type IconName =
+  | 'gear' | 'monitor' | 'cylinder' | 'container' | 'layers' | 'plug' | 'sparkle' | 'beaker' | 'brackets'
+  | 'server' | 'pin' | 'star' | 'shield' | 'flag' | 'briefcase' | 'book' | 'cap' | 'folder' | 'mail'
+  | 'phone' | 'card' | 'branch' | 'floppy'
 
 export type Project = {
   slug: string
@@ -24,13 +30,6 @@ export type StoryChapter = { text?: string; items?: string[] }
 
 export type Screenshot = { src: string; caption: string }
 
-export type Certification = {
-  name: string
-  issuer: string
-  date?: string
-  verify?: string
-}
-
 // Optional title, e.g. the client project the items belong to.
 export type DetailGroup = { title?: string; items: string[] }
 
@@ -39,6 +38,7 @@ export type SlotChapter = { title?: string; text: string }
 
 export type SaveSlot = {
   org: string
+  icon: IconName
   role?: string
   place?: string
   period: string
@@ -56,6 +56,9 @@ export type ContactForm = {
   placeholders: { name: string; email: string; message: string }
   submit: string
   sending: string
+  // Shown with the progress notches while the message is on its way, then on success.
+  saving: string
+  saved: string
   sent: string
   error: string
 }
@@ -87,7 +90,7 @@ export type Dictionary = {
     name: string
     role: string
     base: string
-    stats: { label: string; value: string }[]
+    stats: { label: string; value: string; icon: IconName }[]
     subclasses: { label: string; items: string[] }
     dialog: string
     ctaProjects: string
@@ -96,9 +99,10 @@ export type Dictionary = {
   profile: {
     title: string
     subtitle: string
-    mission: { label: string; text: string }
+    mission: { label: string; state: string; text: string }
     languages: { label: string; items: { name: string; level: string }[] }
-    stack: { label: string; items: string[] }
+    // group: index in skills.groups, for the icon and color of that category.
+    stack: { label: string; items: { name: string; group: number }[] }
   }
   journey: {
     title: string
@@ -117,8 +121,18 @@ export type Dictionary = {
     prevScreen: string
     nextScreen: string
   }
-  skills: { title: string; subtitle: string; groups: SkillGroup[] }
-  certifications: { title: string; subtitle: string; items: Certification[] }
+  skills: {
+    title: string
+    subtitle: string
+    // Shown in the open pocket: "15 MOSSE" and the keyboard hint.
+    countLabel: string
+    // Caption under the bag sprite: "TASCA 1/10".
+    pocket: string
+    hint: string
+    prev: string
+    next: string
+    groups: SkillGroup[]
+  }
   contact: { title: string; subtitle: string; question: string; text: string; links: Link[]; form: ContactForm }
   footer: string
 }

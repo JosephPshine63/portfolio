@@ -31,8 +31,8 @@ export const it: Dictionary = {
     role: 'Fullstack Software Engineer',
     base: 'Base: Napoli',
     stats: [
-      { label: 'LV', value: '3+ anni' },
-      { label: 'Classe attuale', value: 'Software Engineer' },
+      { label: 'LV', value: '3+ anni', icon: 'star' },
+      { label: 'Classe attuale', value: 'Software Engineer', icon: 'shield' },
     ],
     subclasses: { label: 'Sottoclassi', items: ['Fullstack Developer', 'DevOps', 'Product Engineer'] },
     dialog:
@@ -45,6 +45,7 @@ export const it: Dictionary = {
     subtitle: 'Statistiche',
     mission: {
       label: 'Missione attuale',
+      state: 'In corso',
       text: 'Analyst Software Engineer in Accenture, attualmente sulla piattaforma per il mercato di bilanciamento elettrico di Terna.',
     },
     languages: {
@@ -56,7 +57,16 @@ export const it: Dictionary = {
         { name: 'Spagnolo', level: 'A2' },
       ],
     },
-    stack: { label: 'Stack principale', items: ['Java', 'Spring Boot', 'Angular', 'React', 'Kubernetes'] },
+    stack: {
+      label: 'Stack principale',
+      items: [
+        { name: 'Java', group: 0 },
+        { name: 'Spring Boot', group: 0 },
+        { name: 'Angular', group: 1 },
+        { name: 'React', group: 1 },
+        { name: 'Kubernetes', group: 3 },
+      ],
+    },
   },
   journey: {
     title: 'Esperienza',
@@ -66,6 +76,7 @@ export const it: Dictionary = {
     slots: [
       {
         org: 'Accenture',
+        icon: 'briefcase',
         role: 'Analyst Software Engineer',
         place: 'Napoli',
         period: '11/2025 – oggi',
@@ -88,6 +99,7 @@ export const it: Dictionary = {
       },
       {
         org: 'Sistemi Informativi (IBM Company)',
+        icon: 'server',
         role: 'Software Engineer',
         place: 'Roma',
         period: '05/2024 – 09/2025',
@@ -118,6 +130,7 @@ export const it: Dictionary = {
       },
       {
         org: 'IndSoftware',
+        icon: 'gear',
         role: 'PLC/HMI Developer',
         place: 'Angri (SA)',
         period: '11/2023 – 12/2023',
@@ -132,6 +145,7 @@ export const it: Dictionary = {
       },
       {
         org: 'Openjobmetis',
+        icon: 'book',
         role: 'Academy Software Engineer',
         place: 'Roma',
         period: '02/2024 – 03/2024',
@@ -144,6 +158,7 @@ export const it: Dictionary = {
       },
       {
         org: 'I.I.S. Pacinotti',
+        icon: 'cap',
         role: 'Diploma tecnico informatico',
         place: 'Scafati (SA)',
         period: '2018 – 2023',
@@ -457,29 +472,22 @@ export const it: Dictionary = {
   skills: {
     title: 'Skill',
     subtitle: 'Mosse',
+    countLabel: 'mosse',
+    pocket: 'tasca',
+    hint: 'cambia tasca',
+    prev: 'Tasca precedente',
+    next: 'Tasca successiva',
     groups: [
-      { type: 'Backend', items: ['Java', 'Spring Boot', 'Keycloak', 'Kafka'] },
-      { type: 'Frontend', items: ['Angular 14–20', 'React 18', 'TypeScript'] },
-      { type: 'Dati', items: ['PostgreSQL', 'Oracle', 'MongoDB', 'Elasticsearch'] },
-      { type: 'DevOps', items: ['Docker', 'Kubernetes', 'OpenShift', 'AWS'] },
-      { type: 'GenAI', items: ['Claude Code', 'MCP', 'Agent Skills'] },
-    ],
-  },
-  certifications: {
-    title: 'Certificazioni',
-    subtitle: 'Medaglie',
-    items: [
-      {
-        name: 'Certified Junior Angular Developer',
-        issuer: 'Certificates.dev',
-        date: '09/2026',
-        verify: 'https://certificates.dev/c/a2d8323c-26e2-437c-9c89-fd9b605c9520',
-      },
-      { name: 'Anthropic Academy · 6 corsi', issuer: 'Anthropic', date: '04/2026' },
-      { name: 'Enterprise OAuth 2.0 and OpenID Connect', issuer: 'Viraj Shetty', date: '11/2025' },
-      { name: 'Mastering Java Reactive Programming', issuer: 'Vinoth Selvaraj', date: '11/2025' },
-      { name: 'Fundamentals of Database Engineering', issuer: 'Hussein Nasser', date: '11/2025' },
-      { name: 'Java Spring Boot Microservices 5-in-1', issuer: 'in28minutes', date: '08/2024' },
+      { type: 'Backend', items: ['Java 17+', 'Spring Boot 3', 'Spring Security', 'Spring Data JPA', 'Spring Batch', 'REST API', 'JWT', 'OAuth2', 'Keycloak', 'WebSocket', 'Node.js', 'Python', 'Django', 'Twisted', 'SQLAlchemy'] },
+      { type: 'Frontend', items: ['Angular 14–20', 'RxJS', 'TypeScript', 'Angular Material', 'React 18', 'Redux', 'Tailwind CSS', 'Bootstrap', 'SCSS'] },
+      { type: 'Database', items: ['PostgreSQL', 'MySQL', 'Oracle DB', 'MongoDB', 'H2', 'Elasticsearch', 'Liquibase', 'Supabase'] },
+      { type: 'DevOps & Tools', items: ['Docker', 'Docker Compose', 'Git', 'GitFlow', 'GitHub', 'GitLab', 'CI/CD', 'Maven', 'Gradle', 'NPM', 'Kafka', 'AWS', 'Kubernetes', 'OpenShift'] },
+      { type: 'Architetture', items: ['REST monolitica', 'Microservizi', 'Layered Architecture', 'DTO/DAO/MVC', 'Design Pattern (Singleton, Factory, Strategy, Builder)'] },
+      { type: 'Integrazioni', items: ['Stripe', 'Razorpay', 'CoinGecko API', 'Gemini AI', 'Gmail SMTP', 'WSO2', 'Siemens TIA Portal'] },
+      { type: 'GenAI & AI Tools', items: ['Claude', 'Claude Code', 'Model Context Protocol (MCP)', 'Agent Skills', 'Subagents', 'Integrazione LLM via API (Gemini AI, Claude AI)', 'Copilot', 'Copilot CLI'] },
+      { type: 'Testing', items: ['JUnit', 'Spring Boot Test', 'Mockito', 'Playwright'] },
+      { type: 'IDE & Altro', items: ['IntelliJ IDEA', 'VS Code', 'Eclipse STS', 'Postman'] },
+      { type: 'Sistemi & Self-Hosting', items: ['Ubuntu Server', 'UFW Firewall', 'Nginx', 'Nginx Proxy Manager', 'Cockpit', 'Portainer', 'Nextcloud', 'Pi-hole'] },
     ],
   },
   contact: {
@@ -488,10 +496,10 @@ export const it: Dictionary = {
     question: 'Vuoi salvare il contatto prima di uscire?',
     text: 'Aperto a ruoli fullstack o backend in aziende product, SaaS o di consulenza.',
     links: [
-      { label: 'Email', href: `mailto:${site.email}` },
-      { label: 'WhatsApp', href: site.whatsapp },
-      { label: 'LinkedIn', href: site.linkedin },
-      { label: 'GitHub', href: site.github },
+      { label: 'Email', icon: 'mail', href: `mailto:${site.email}` },
+      { label: 'WhatsApp', icon: 'phone', href: site.whatsapp },
+      { label: 'LinkedIn', icon: 'card', href: site.linkedin },
+      { label: 'GitHub', icon: 'branch', href: site.github },
     ],
     form: {
       title: 'Lascia un messaggio',
@@ -501,6 +509,8 @@ export const it: Dictionary = {
       placeholders: { name: 'Mario Rossi', email: 'mario@esempio.it', message: 'Ciao Giuseppe, ti scrivo per…' },
       submit: 'Invia',
       sending: 'Invio in corso…',
+      saving: 'Salvataggio in corso… non spegnere',
+      saved: 'Partita salvata!',
       sent: 'Messaggio inviato! Ti rispondo appena posso.',
       error: 'Il messaggio non è partito. Riprova o scrivimi direttamente a',
     },

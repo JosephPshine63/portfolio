@@ -27,6 +27,6 @@ There is no test suite or linter. Deployment: `.github/workflows/deploy.yml` bui
 ## Editing rules
 
 - Every visible text change goes in both `content/it.ts` and `content/en.ts`; new text means a new field in `content/types.ts` first.
-- Section titles stay plain for recruiters and search engines, with the game label as a subtitle (Progetti ▸ SQUADRA, Esperienza ▸ VIAGGIO, Certificazioni ▸ MEDAGLIE, Skill ▸ MOSSE, Contatti ▸ SALVA).
+- Section titles stay plain for recruiters and search engines, with the game label as a subtitle (Progetti ▸ SQUADRA, Esperienza ▸ VIAGGIO, Skill ▸ MOSSE, Contatti ▸ SALVA).
 - Pixel art must be original: no Nintendo/Pokémon sprites, names or logos. Use the pixel font for UI and headings only, never for paragraphs.
 - Keep content honest and consistent with the CV (no invented stats or claims).

@@ -1,15 +1,29 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
+import { PixelIcon } from './PixelIcons'
 import type { ContactForm as Texts } from '@/content/types'
 import { site } from '@/content/shared'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
+const NOTCHES = 10
+
 // The site has no server, so the form posts to Web3Forms, which forwards the
 // message to site.email.
 export function ContactForm({ t }: { t: Texts }) {
   const [status, setStatus] = useState<Status>('idle')
+  const [filled, setFilled] = useState(0)
+
+  // Save bar: fills while the request is out, never past the last notch until
+  // it succeeds, so it does not claim more than it knows.
+  useEffect(() => {
+    if (status === 'sent') setFilled(NOTCHES)
+    if (status !== 'sending') return
+    setFilled(0)
+    const id = window.setInterval(() => setFilled((n) => Math.min(n + 1, NOTCHES - 1)), 140)
+    return () => window.clearInterval(id)
+  }, [status])
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -49,7 +63,20 @@ export function ContactForm({ t }: { t: Texts }) {
         {status === 'sending' ? t.sending : `▶ ${t.submit.toUpperCase()}`}
       </button>
       <div role="status" aria-live="polite">
-        {status === 'sent' && <p className="contact-form__status">{t.sent}</p>}
+        {(status === 'sending' || status === 'sent') && (
+          <div className={`save-bar${status === 'sent' ? ' save-bar--done' : ''}`}>
+            <p className="save-bar__title">
+              <PixelIcon name="floppy" color="var(--blue)" />
+              {(status === 'sent' ? t.saved : t.saving).toUpperCase()}
+            </p>
+            <div className="save-bar__notches" aria-hidden="true">
+              {Array.from({ length: NOTCHES }, (_, i) => (
+                <i key={i} className={i < filled ? 'on' : undefined} />
+              ))}
+            </div>
+            {status === 'sent' && <p>{t.sent}</p>}
+          </div>
+        )}
         {status === 'error' && (
           <p className="contact-form__status">
             {t.error} <a href={`mailto:${site.email}`}>{site.email}</a>

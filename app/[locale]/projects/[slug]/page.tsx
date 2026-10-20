@@ -1,6 +1,7 @@
 import { LangSwitch } from '@/components/LangSwitch'
 import { ProjectCarousel } from '@/components/ProjectCarousel'
 import { ProjectScreen } from '@/components/ProjectScreen'
+import { ProjectStatus } from '@/components/ProjectStatus'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getDictionary, isLocale, locales, type Locale } from '@/content'
 import { projectMetadata, projectPath } from '@/lib/seo'
@@ -40,7 +41,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
       <header className="site-header">
         <nav className="window site-nav" aria-label="Main">
           <a href={`/${locale}/`} className="logo">
-            GPR<span className="accent">.</span>DEV
+            GPRDEV
           </a>
           <div className="site-nav__links">
             <a href={`/${locale}/#progetti`}>◀ {t.caseStudy.eject.toUpperCase()}</a>
@@ -79,9 +80,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
           )}
           <div className="project-card__head">
             <h1 className="case-study__title">{project.name}</h1>
-            <span className={project.status === 'online' ? 'status pixel' : 'muted pixel'}>
-              {(project.status === 'online' ? t.ui.online : t.ui.repo).toUpperCase()}
-            </span>
+            <ProjectStatus status={project.status} online={t.ui.online} repo={t.ui.repo} />
           </div>
           <p className="trainer-card__role">{project.tagline}</p>
           <p>{project.description}</p>

@@ -13,6 +13,19 @@
   --green: #2f8a3e;
   --yellow: #e8b820;
   --chip: #e4ebf6;
+  --sel: #fde9a8;
+  --line: #1c2333;
+  /* One color per skill category, in the order of content skills.groups. */
+  --t-1: #d8642a;
+  --t-2: #2a5fb8;
+  --t-3: #2f8a3e;
+  --t-4: #6a4fb0;
+  --t-5: #8a6a3a;
+  --t-6: #c0407a;
+  --t-7: #1f8a8a;
+  --t-8: #a07c0c;
+  --t-9: #5a6478;
+  --t-10: #3f6a3f;
   color-scheme: light;
 }
 
@@ -29,6 +42,18 @@
   --green: #6fd27e;
   --yellow: #f8d048;
   --chip: #2c3860;
+  --sel: #3a4a80;
+  --line: #0a0f20;
+  --t-1: #c05420;
+  --t-2: #3a6cc8;
+  --t-3: #2f8040;
+  --t-4: #7058c0;
+  --t-5: #8c6c3c;
+  --t-6: #b83c74;
+  --t-7: #1c8080;
+  --t-8: #9a7a10;
+  --t-9: #5c6880;
+  --t-10: #3c6c3c;
   color-scheme: dark;
 }
 
@@ -631,17 +656,587 @@ ul.plain {
   scroll-snap-align: start;
 }
 
-.moves li {
-  padding: 6px 0;
-  font-family: var(--font-pixel), monospace;
-}
-
 .type {
   padding: 0 10px;
   font-size: 14px;
   color: #ffffff;
   background: var(--red);
   border-radius: 4px;
+}
+
+/* Game details around the page: pixel icons (components/PixelIcons.tsx),
+   blinking cursors and step animations. All off with reduced motion, below. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.px-icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.px-icon svg,
+.chips li > .px {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ▶ cursor in front of menu links and secondary buttons on hover or focus;
+   primary buttons already carry their ▶. */
+.menu a::before,
+.button:not(.button--primary)::before {
+  content: '▶';
+  width: 0;
+  overflow: hidden;
+  font-size: 0.7em;
+  color: var(--red);
+}
+
+/* Cancel the flex gap while the cursor is hidden, so the text does not move. */
+.menu a::before {
+  margin-right: -10px;
+}
+
+.menu a:is(:hover, :focus-visible)::before,
+.button:not(.button--primary):is(:hover, :focus-visible)::before {
+  width: 1.3em;
+  margin-right: 0;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Hero dialog: the typed text sits on an invisible full copy. */
+.dialog {
+  position: relative;
+  cursor: var(--cursor-hand);
+}
+
+.dialog__text {
+  display: grid;
+}
+
+.dialog__text > span {
+  grid-area: 1 / 1;
+}
+
+.dialog__ghost {
+  visibility: hidden;
+}
+
+.dialog__more {
+  position: absolute;
+  right: 18px;
+  bottom: 8px;
+  font-size: 16px;
+  color: var(--red);
+  visibility: hidden;
+}
+
+.dialog--done .dialog__more {
+  visibility: visible;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+/* Profile: the mission takes the whole row, languages and stack share the next. */
+.profile-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+}
+
+.mission {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.mission > .px-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.mission__state {
+  display: flex;
+  gap: 6px;
+  margin: 2px 0 4px;
+  font-size: 14px;
+  color: var(--green);
+}
+
+.mission__state::before {
+  content: '▶';
+  animation: blink 1s steps(1) infinite;
+}
+
+.lang {
+  display: grid;
+  grid-template-columns: 6.5em 1fr 2.2em;
+  align-items: center;
+  gap: 10px;
+}
+
+.cefr {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+}
+
+.cefr i {
+  height: 12px;
+  background: var(--chip);
+  border: 2px solid var(--inner);
+  border-radius: 2px;
+}
+
+.cefr i.on {
+  background: var(--green);
+  border-color: color-mix(in srgb, var(--green) 70%, #000);
+}
+
+.cefr__scale {
+  margin-top: 4px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.stack li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 2px solid color-mix(in srgb, var(--c) 55%, transparent);
+}
+
+/* Journey */
+.save-slot__who {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.save-slot__icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--chip);
+  border: 3px solid var(--inner);
+  border-radius: 6px;
+}
+
+.save-slot__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.save-slot--current {
+  animation: slot-pulse 1.6s steps(1) infinite;
+}
+
+@keyframes slot-pulse {
+  50% {
+    border-color: var(--red);
+  }
+}
+
+.save-slot--current .save-slot__head span[aria-hidden] {
+  animation: blink 1s steps(1) infinite;
+}
+
+.save-slot__more[open] .save-slot__group {
+  animation: reveal 0.45s steps(5) both;
+}
+
+.save-slot__more[open] .save-slot__group:nth-of-type(2) {
+  animation-delay: 0.12s;
+}
+
+.save-slot__more[open] .save-slot__group:nth-of-type(n + 3) {
+  animation-delay: 0.24s;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Projects */
+.led {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--green) 35%, transparent);
+  animation: blink 1.2s steps(1) infinite;
+}
+
+.icon-line .px-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Carousel arrows as d-pad buttons that press down. */
+.carousel__nav .chip-button {
+  position: relative;
+  color: #ffffff;
+  background: var(--frame);
+  border: 0;
+  border-radius: 4px;
+  box-shadow:
+    inset -3px -3px 0 rgba(0, 0, 0, 0.35),
+    inset 3px 3px 0 rgba(255, 255, 255, 0.18);
+}
+
+.carousel__nav .chip-button:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.carousel__nav .chip-button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Contact */
+.menu a {
+  gap: 10px;
+}
+
+.menu__detail {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 15px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.menu .px-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.save-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 3px dashed var(--inner);
+  border-radius: 6px;
+}
+
+.save-bar__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-pixel), monospace;
+}
+
+.save-bar__title .px-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.save-bar--done .save-bar__title {
+  color: var(--green);
+}
+
+.save-bar__notches {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3px;
+}
+
+.save-bar__notches i {
+  height: 14px;
+  background: var(--chip);
+  border: 2px solid var(--inner);
+  border-radius: 2px;
+}
+
+.save-bar__notches i.on {
+  background: var(--blue);
+  border-color: color-mix(in srgb, var(--blue) 70%, #000);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu a::before,
+  .button::before,
+  .dialog__more,
+  .mission__state::before,
+  .save-slot--current,
+  .save-slot--current .save-slot__head span,
+  .save-slot__group,
+  .led {
+    animation: none !important;
+  }
+}
+
+/* Skills: bag menu (components/SkillBag.tsx, icons in components/PixelIcons.tsx). */
+.bag {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.px {
+  display: block;
+}
+
+.bag__side {
+  display: flex;
+  flex-direction: column;
+  background: color-mix(in srgb, var(--inner) 22%, var(--win));
+  border-right: 4px solid var(--frame);
+}
+
+.bag__sprite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 0 12px;
+  font-size: 14px;
+  color: var(--muted);
+  border-bottom: 3px dashed var(--inner);
+}
+
+.bag__sprite svg {
+  width: 96px;
+  height: 80px;
+  animation: bag-wiggle 0.36s steps(4);
+}
+
+@keyframes bag-wiggle {
+  25% {
+    transform: translate(-3px, -3px);
+  }
+  50% {
+    transform: translate(3px, 0);
+  }
+  75% {
+    transform: translate(-3px, -3px);
+  }
+}
+
+.bag__tabs {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 14px;
+}
+
+.bag__tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 16px 6px 12px;
+  font: inherit;
+  font-family: var(--font-pixel), monospace;
+  font-size: 16px;
+  color: var(--ink);
+  text-align: left;
+  background: none;
+  border: 0;
+}
+
+.bag__tabs button::before {
+  content: '▶';
+  font-size: 12px;
+  color: var(--red);
+  visibility: hidden;
+}
+
+.bag__tabs button:hover {
+  background: color-mix(in srgb, var(--sel) 50%, transparent);
+}
+
+.bag__tabs button[aria-selected='true'] {
+  background: var(--sel);
+}
+
+.bag__tabs button[aria-selected='true']::before {
+  visibility: visible;
+  animation: bag-blink 1s steps(1) infinite;
+}
+
+@keyframes bag-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.bag__tabs button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: -3px;
+}
+
+.bag__tabs svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+.bag__tabs button[aria-selected='true'] svg {
+  animation: bag-hop 0.5s steps(2);
+}
+
+@keyframes bag-hop {
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.bag__n {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.bag__pockets {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bag__pocket {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 24px;
+}
+
+.bag__pocket[hidden] {
+  display: none;
+}
+
+.bag__pocket .type {
+  background: var(--c);
+}
+
+.bag__pocket .chips li {
+  border-bottom: 2px solid color-mix(in srgb, var(--c) 55%, transparent);
+  animation: bag-drop 0.3s steps(3) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+
+@keyframes bag-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.bag__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.bag__head svg {
+  width: 36px;
+  height: 36px;
+}
+
+.bag__foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: auto 0 0;
+  padding-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  border-top: 3px dashed var(--inner);
+}
+
+.bag__foot button {
+  min-width: 32px;
+  padding: 2px 8px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--win);
+  border: 2px solid var(--inner);
+  border-radius: 4px;
+}
+
+.bag__foot button:hover {
+  background: var(--sel);
+}
+
+.bag__foot button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.bag__foot span {
+  margin-left: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bag *,
+  .bag *::before {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .bag {
+    grid-template-columns: 1fr;
+  }
+
+  .bag__side {
+    border-right: 0;
+    border-bottom: 4px solid var(--frame);
+  }
+
+  .bag__sprite {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .bag__sprite svg {
+    width: 60px;
+    height: 50px;
+  }
+
+  .bag__tabs {
+    flex-direction: row;
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  .bag__tabs button {
+    flex: none;
+    width: auto;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+
+  .bag__n {
+    display: none;
+  }
 }
 
 .contact {
