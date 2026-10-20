@@ -126,13 +126,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         <section id="viaggio">
           <SectionTitle title={t.journey.title} subtitle={t.journey.subtitle} />
-          <ol className="save-slots">
+          <ol className="save-slots" reversed>
             {t.journey.slots.map((slot, i) => (
               <li key={slot.org}>
                 <article className={`window save-slot${slot.current ? ' save-slot--current' : ''}`}>
                   <p className="save-slot__head">
                     <span>
-                      {t.journey.slotLabel.toUpperCase()} {i + 1}
+                      {t.journey.slotLabel.toUpperCase()} {t.journey.slots.length - i}
                     </span>
                     {slot.current && <span aria-hidden="true">▶</span>}
                   </p>
